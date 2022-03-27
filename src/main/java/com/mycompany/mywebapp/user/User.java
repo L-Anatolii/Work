@@ -5,6 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name ="users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -20,6 +21,9 @@ public class User {
 
     @Column(nullable = false, length = 45, name = "last_name")
     private String lastName;
+
+    @Column(nullable = false, length = 256, name = "file_name")
+    private String fileName;
 
     private boolean enabled;
 
@@ -63,6 +67,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public String getFileName() {
+        return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
     public boolean isEnabled() {
         return enabled;
     }
@@ -79,6 +91,7 @@ public class User {
                 ", password='" + password + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", fileName='" + fileName + '\'' +
                 ", enabled=" + enabled +
                 '}';
     }
