@@ -1,5 +1,6 @@
-package com.mycompany.mywebapp.user;
+package com.mycompany.mywebapp.entity;
 
+import com.mycompany.mywebapp.entity.User;
 import org.springframework.data.repository.CrudRepository;
 
 public interface UserRepository extends CrudRepository<User, Integer> {

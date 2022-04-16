@@ -1,4 +1,4 @@
-package com.mycompany.mywebapp.user;
+package com.mycompany.mywebapp.entity;
 
 import javax.persistence.*;
 
