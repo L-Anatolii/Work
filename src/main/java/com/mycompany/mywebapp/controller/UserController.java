@@ -4,7 +4,7 @@ import com.mycompany.mywebapp.service.MailSender;
 import com.mycompany.mywebapp.service.ReportService;
 import com.mycompany.mywebapp.service.UserService;
 import com.mycompany.mywebapp.entity.User;
-import com.mycompany.mywebapp.user.UserNotFoundException;
+import com.mycompany.mywebapp.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

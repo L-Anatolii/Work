@@ -1,4 +1,4 @@
-package com.mycompany.mywebapp.user;
+package com.mycompany.mywebapp.exception;
 
 public class UserNotFoundException extends Throwable {
     public UserNotFoundException(String message) {

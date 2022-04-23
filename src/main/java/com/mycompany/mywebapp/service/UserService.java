@@ -1,7 +1,7 @@
 package com.mycompany.mywebapp.service;
 
 import com.mycompany.mywebapp.entity.User;
-import com.mycompany.mywebapp.user.UserNotFoundException;
+import com.mycompany.mywebapp.exception.UserNotFoundException;
 import com.mycompany.mywebapp.entity.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

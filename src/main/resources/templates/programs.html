@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Manage Users</title>
+  <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+  <div><h2>Manage Users</h2></div>
+  <div>
+    <a class="h3 m-2" th:href="@{/programs/new}">Add new program</a>
+  </div>
+  <div th:if = "${message}" class="alert alert-success text-center">
+    [[${message}]]
+  </div>
+
+  <div>
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+      <tr>
+        <th>Название</th>
+        <th>Номер</th>
+        <th>Продолжительность</th>
+        <th>Должность лица, утверждающего программу</th>
+        <th>Дата утверждения</th>
+      </tr>
+      </thead>
+      <tbody>
+      <th:block th:each ="program:${listPrograms}">
+        <tr>
+          <td>[[${program.titleOfProgram}]]</td>
+          <td>[[${program.programNumber}]]</td>
+          <td>[[${program.duration}]]</td>
+          <td>[[${program.jobPosition}]]</td>
+          <td>[[${program.dateOfApproval}]]</td>
+          <td>
+            <a class="h4 mr-3" th:href="@{'/programs/edit/'+${program.id}}">Edit</a>
+            <a class="h4" th:href="@{'/programs/delete/'+${program.id}}">Delete</a>
+          </td>
+        </tr>
+      </th:block>
+      </tbody>
+    </table>
+  </div>
+</div>
+</body>
+</html>

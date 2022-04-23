@@ -27,6 +27,9 @@ public class User {
 
     private boolean enabled;
 
+    public User() {
+    }
+
     public Integer getId() {
         return id;
     }
