@@ -1,8 +1,10 @@
 package com.mycompany.mywebapp.service;
 
+import com.mycompany.mywebapp.dto.RegulationDocumentDto;
 import com.mycompany.mywebapp.entity.RegulationDocument;
 import com.mycompany.mywebapp.entity.RegulationDocumentRepository;
 import com.mycompany.mywebapp.exception.RegulationDocumentNotFoundException;
+import com.mycompany.mywebapp.сonverter.RegulationDocumentConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,18 +17,23 @@ public class RegulationDocumentServise {
     @Autowired
     private RegulationDocumentRepository repoDocument;
 
-    public List<RegulationDocument> listAll(){
-        return (List<RegulationDocument>) repoDocument.findAll();
+    @Autowired
+    private RegulationDocumentConverter converter;
+
+
+    public List<RegulationDocumentDto> getAllRegulationDocuments(){
+        List<RegulationDocument> regulationDocument = repoDocument.findAll();
+        return converter.entityToDto(regulationDocument);
     }
 
-    public void save(RegulationDocument regulationDocument){
-        repoDocument.save(regulationDocument);
+    public void save(RegulationDocumentDto regulationDocumentDto){
+        repoDocument.save(converter.dtoToEntity(regulationDocumentDto));
     }
 
-    public RegulationDocument get(Long id) throws RegulationDocumentNotFoundException {
+    public RegulationDocumentDto get(Long id) throws RegulationDocumentNotFoundException {
         Optional<RegulationDocument> result = repoDocument.findById(id);
         if(result.isPresent()){
-            return result.get();
+            return converter.entityToDto(result.get());
         }
         throw new RegulationDocumentNotFoundException("Could not find any regulation documents with ID"+ id);
     }

@@ -1,8 +1,11 @@
 package com.mycompany.mywebapp.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mycompany.mywebapp.service.Positions.JobPositions;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity
@@ -25,9 +28,12 @@ public class RegulationDocument {
     private JobPositions jobPosition;
 
     //дата утверждения
-    @Temporal(value = TemporalType.DATE)
+
+//    @Temporal(value = TemporalType.DATE)
     @Column(name = "dateOfApproval")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfApproval;
+
 
     public RegulationDocument() {
     }
@@ -72,13 +78,14 @@ public class RegulationDocument {
         this.dateOfApproval = dateOfApproval;
     }
 
+
     @Override
     public String toString() {
         return "RegulationDocument{" +
                 "id=" + id +
                 ", documentNumber=" + documentNumber +
                 ", titleOfDocument='" + titleOfDocument + '\'' +
-                ", approvedTheDocument='" + jobPosition + '\'' +
+                ", jobPosition=" + jobPosition +
                 ", dateOfApproval=" + dateOfApproval +
                 '}';
     }

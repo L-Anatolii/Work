@@ -27,14 +27,14 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private JobPositions jobPosition;
 
-
-    // 21:54 и дальше...
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "employees_safetyTrainingProgram",
             joinColumns = {@JoinColumn(name = "employee_id")},
             inverseJoinColumns = {@JoinColumn(name = "safetyTrainingProgram_id")})
     private Set<SafetyTrainingProgram> programs = new HashSet<>();
+
+
 
     public void addProgram(SafetyTrainingProgram program) {
         programs.add(program);

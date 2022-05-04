@@ -1,7 +1,7 @@
 package com.mycompany.mywebapp.controller;
 
 import com.mycompany.mywebapp.service.MailSender;
-import com.mycompany.mywebapp.service.ReportService;
+import com.mycompany.mywebapp.jasperreport.ReportService;
 import com.mycompany.mywebapp.service.UserService;
 import com.mycompany.mywebapp.entity.User;
 import com.mycompany.mywebapp.exception.UserNotFoundException;

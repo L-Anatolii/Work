@@ -24,4 +24,8 @@ public enum JobPositions {
     JobPositions(String name) {
         this.name = name;
     }
+
+    public String getName() {
+        return name;
+    }
 }

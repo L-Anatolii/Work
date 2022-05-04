@@ -1,6 +1,7 @@
-package com.mycompany.mywebapp.service;
+package com.mycompany.mywebapp.jasperreport;
 
 import com.mycompany.mywebapp.entity.User;
+import com.mycompany.mywebapp.service.UserService;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;

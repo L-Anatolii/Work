@@ -1,11 +1,10 @@
 package com.mycompany.mywebapp.entity;
 
-
 import com.mycompany.mywebapp.service.Positions.JobPositions;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -31,8 +30,8 @@ public class SafetyTrainingProgram {
     private JobPositions jobPosition;
 
     //дата утверждения
-    @Temporal(value = TemporalType.DATE)
     @Column(name = "dateOfApproval")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfApproval;
 
     @ManyToMany(mappedBy = "programs")
@@ -104,7 +103,7 @@ public class SafetyTrainingProgram {
                 ", titleOfProgram='" + titleOfProgram + '\'' +
                 ", programNumber=" + programNumber +
                 ", duration=" + duration +
-                ", jobPosition=" + jobPosition +
+                ", jobPosition=" + jobPosition+
                 ", dateOfApproval=" + dateOfApproval +
                 ", employees=" + employees +
                 '}';

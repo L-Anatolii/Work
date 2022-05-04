@@ -1,8 +1,10 @@
 package com.mycompany.mywebapp.service;
 
+import com.mycompany.mywebapp.dto.EmployeeDto;
 import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.entity.EmployeeRepository;
 import com.mycompany.mywebapp.exception.EmployeeNotFoundException;
+import com.mycompany.mywebapp.сonverter.EmployeeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,18 +17,22 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository repoEmployee;
 
-    public List<Employee> listAll(){
-        return (List<Employee>) repoEmployee.findAll();
+    @Autowired
+    private EmployeeConverter converter;
+
+    public List<EmployeeDto> getAllEmployees(){
+        List<Employee> employees = (List<Employee>) repoEmployee.findAll();
+        return converter.entityToDto(employees);
     }
 
-    public void save(Employee employee){
-        repoEmployee.save(employee);
+    public void save(EmployeeDto employeeDto){
+        repoEmployee.save(converter.dtoToEntity(employeeDto));
     }
 
-    public Employee get(Long id) throws EmployeeNotFoundException {
+    public EmployeeDto get(Long id) throws EmployeeNotFoundException {
         Optional<Employee> result = repoEmployee.findById(id);
         if(result.isPresent()){
-            return result.get();
+            return converter.entityToDto(result.get());
         }
         throw new EmployeeNotFoundException(("Could not find any employees with ID"+ id));
     }
