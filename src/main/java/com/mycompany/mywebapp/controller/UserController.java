@@ -1,9 +1,9 @@
 package com.mycompany.mywebapp.controller;
 
+import com.mycompany.mywebapp.entity.*;
 import com.mycompany.mywebapp.service.MailSender;
 import com.mycompany.mywebapp.jasperreport.ReportService;
 import com.mycompany.mywebapp.service.UserService;
-import com.mycompany.mywebapp.entity.User;
 import com.mycompany.mywebapp.exception.UserNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -32,11 +32,26 @@ public class UserController {
     @Autowired
     ReportService reportService;
 
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+    @Autowired
+    ProtocolRepository protocolRepository;
+
     private static String UPLOADED_FOLDER = "C:/Users/Anato/Desktop";
+
+//    @GetMapping("/protocol")
+//    public String showProtocolList(Model model) {
+//        List<Employee> protocols = (List<Employee>) employeeRepository.findAll();
+//        model.addAttribute("listProtocols", protocols);
+//        return "protocol";
+//    }
 
     @GetMapping("/protocol")
     public String showProtocolList(Model model) {
+        List<Protocol> protocols = (List<Protocol>) protocolRepository.findAll();
 
+        model.addAttribute("listProtocols", protocols);
         return "protocol";
     }
 

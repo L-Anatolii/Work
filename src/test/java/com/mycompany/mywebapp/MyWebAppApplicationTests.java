@@ -226,7 +226,7 @@ class MyWebAppApplicationTests {
 
         List<Employee> employees = new ArrayList<>();
         employees.add(employee2);
-//        employees.add(employee3);
+        employees.add(employee3);
 
 
         Protocol protocol2 = new Protocol();
@@ -236,15 +236,27 @@ class MyWebAppApplicationTests {
         protocol2.setThreeMemberOfCommission(JobPositions.NACHALNIK_DS);
         protocol2.setFourMemberOfCommission(JobPositions.NACHALNIK_EHZ);
         protocol2.setDateOfExamination(Date.valueOf(LocalDate.now()));
-        protocol2.setEmployees(employees);
+        protocol2.setEmployees((List<Employee>) employeeRepository.findAll());
 
         protocolRepository.save(protocol2);
-        employeeRepository.save(employee2);
+
+//        employeeRepository.save(employee2);
 //        employeeRepository.save(employee3);
-        safetyTrainingProgramRepository.save(program3);
-        safetyTrainingProgramRepository.save(program2);
-        certificationRepository.save(certification2);
-        certificationRepository.save(certification3);
+//        safetyTrainingProgramRepository.save(program3);
+//        safetyTrainingProgramRepository.save(program2);
+//        certificationRepository.save(certification2);
+//        certificationRepository.save(certification3);
     }
 
+    @Autowired
+    SafetyTrainingProgramRepository safetyTrainingProgram;
+
+
+
+    @Test
+    public void Protocol2(){
+        List<Employee> employees = (List<Employee>) employeeRepository.findAll();
+
+
+    }
 }

@@ -3,6 +3,7 @@ package com.mycompany.mywebapp.entity;
 import com.mycompany.mywebapp.service.Positions.JobPositions;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -37,9 +38,9 @@ public class Protocol {
     @Enumerated(EnumType.STRING)
     private JobPositions fourMemberOfCommission;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.MERGE)
     @JoinColumn(name = "protocolId")
-    private List<Employee> employees;
+    private List<Employee> employees = new ArrayList<>();
 
     //причина проверки знаний ???
 
@@ -112,15 +113,14 @@ public class Protocol {
 
     @Override
     public String toString() {
-        return "Protocol{" +
-                "id=" + id +
-                ", dateOfExamination=" + dateOfExamination +
-                ", chairman=" + chairman +
-                ", oneMemberOfCommission=" + oneMemberOfCommission +
-                ", twoMemberOfCommission=" + twoMemberOfCommission +
-                ", threeMemberOfCommission=" + threeMemberOfCommission +
-                ", fourMemberOfCommission=" + fourMemberOfCommission +
-                ", employees=" + employees +
+        return "\nProtocol{" +
+                "\nid=" + id +
+                ", \ndateOfExamination=" + dateOfExamination +
+                ", \nchairman=" + chairman +
+                ", \noneMemberOfCommission=" + oneMemberOfCommission +
+                ", \ntwoMemberOfCommission=" + twoMemberOfCommission +
+                ", \nthreeMemberOfCommission=" + threeMemberOfCommission +
+                ", \nfourMemberOfCommission=" + fourMemberOfCommission +
                 '}';
     }
 }

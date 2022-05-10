@@ -81,12 +81,12 @@ public class RegulationDocument {
 
     @Override
     public String toString() {
-        return "RegulationDocument{" +
-                "id=" + id +
-                ", documentNumber=" + documentNumber +
-                ", titleOfDocument='" + titleOfDocument + '\'' +
-                ", jobPosition=" + jobPosition +
-                ", dateOfApproval=" + dateOfApproval +
+        return "\nRegulationDocument{" +
+                "\nid=" + id +
+                ", \ndocumentNumber=" + documentNumber +
+                ", \ntitleOfDocument='" + titleOfDocument + '\'' +
+                ", \njobPosition=" + jobPosition +
+                ", \ndateOfApproval=" + dateOfApproval +
                 '}';
     }
 

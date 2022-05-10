@@ -6,6 +6,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -36,13 +37,9 @@ public class SafetyTrainingProgram {
     private Date dateOfApproval;
 
     @ManyToMany(mappedBy = "programs")
-    private Set<Employee> employees;
+    private Set<Employee> employees = new HashSet<>();
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "safetyTrainingProgramsId")
-//    private Set<Certification> certifications;
-
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne( cascade = CascadeType.ALL)
     @JoinColumn(name = "certificationId")
     private Certification certification;
 
@@ -115,15 +112,16 @@ public class SafetyTrainingProgram {
 
     @Override
     public String toString() {
-        return "SafetyTrainingProgram{" +
-                "id=" + id +
-                ", titleOfProgram='" + titleOfProgram + '\'' +
-                ", programNumber=" + programNumber +
-                ", duration=" + duration +
-                ", jobPosition=" + jobPosition +
-                ", dateOfApproval=" + dateOfApproval +
-                ", employees=" + employees +
-                ", certification=" + certification +
+        return "\nSafetyTrainingProgram{" +
+                "\nid=" + id +
+                ", \ntitleOfProgram='" + titleOfProgram + '\'' +
+                ", \nprogramNumber=" + programNumber +
+                ", \nduration=" + duration +
+                ", \njobPosition=" + jobPosition +
+                ", \ndateOfApproval=" + dateOfApproval +
+                ", \nemployees=" + employees +
+                ", \ncertification=" + certification +
                 '}';
     }
+
 }

@@ -46,10 +46,10 @@ public class Certification {
 
     @Override
     public String toString() {
-        return "Certification{" +
-                "id=" + id +
-                ", number=" + number +
-                ", program=" + program +
+        return "\nCertification{" +
+                "\nid=" + id +
+                ", \nnumber=" + number +
+                ", \nprogram=" + program +
                 '}';
     }
 }

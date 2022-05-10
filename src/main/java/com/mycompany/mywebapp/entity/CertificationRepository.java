@@ -8,5 +8,5 @@ import java.util.List;
 @Repository
 public interface CertificationRepository extends CrudRepository<Certification, Long> {
 
-    public List<CertificationRepository> findAllBy();
+    public List<Certification> findAll();
 }
