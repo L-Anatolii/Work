@@ -1,6 +1,7 @@
 package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
+import org.springframework.context.annotation.EnableMBeanExport;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -36,6 +37,14 @@ public class SafetyTrainingProgram {
 
     @ManyToMany(mappedBy = "programs")
     private Set<Employee> employees;
+
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "safetyTrainingProgramsId")
+//    private Set<Certification> certifications;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "certificationId")
+    private Certification certification;
 
     public SafetyTrainingProgram() {
     }
@@ -96,6 +105,14 @@ public class SafetyTrainingProgram {
         this.employees = employees;
     }
 
+    public Certification getCertification() {
+        return certification;
+    }
+
+    public void setCertification(Certification certification) {
+        this.certification = certification;
+    }
+
     @Override
     public String toString() {
         return "SafetyTrainingProgram{" +
@@ -103,9 +120,10 @@ public class SafetyTrainingProgram {
                 ", titleOfProgram='" + titleOfProgram + '\'' +
                 ", programNumber=" + programNumber +
                 ", duration=" + duration +
-                ", jobPosition=" + jobPosition+
+                ", jobPosition=" + jobPosition +
                 ", dateOfApproval=" + dateOfApproval +
                 ", employees=" + employees +
+                ", certification=" + certification +
                 '}';
     }
 }

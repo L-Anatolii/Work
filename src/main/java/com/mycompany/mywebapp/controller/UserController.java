@@ -34,6 +34,12 @@ public class UserController {
 
     private static String UPLOADED_FOLDER = "C:/Users/Anato/Desktop";
 
+    @GetMapping("/protocol")
+    public String showProtocolList(Model model) {
+
+        return "protocol";
+    }
+
     @GetMapping("/users")
     public String showUserList(Model model) {
         List<User> listUsers = service.listAll();

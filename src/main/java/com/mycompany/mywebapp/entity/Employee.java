@@ -4,6 +4,7 @@ import com.mycompany.mywebapp.service.Positions.JobPositions;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -27,14 +28,13 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private JobPositions jobPosition;
 
+
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(
             name = "employees_safetyTrainingProgram",
             joinColumns = {@JoinColumn(name = "employee_id")},
             inverseJoinColumns = {@JoinColumn(name = "safetyTrainingProgram_id")})
     private Set<SafetyTrainingProgram> programs = new HashSet<>();
-
-
 
     public void addProgram(SafetyTrainingProgram program) {
         programs.add(program);
@@ -45,6 +45,7 @@ public class Employee {
         programs.remove(program);
         program.getEmployees().remove(this);
     }
+
 
     public Employee() {
     }
