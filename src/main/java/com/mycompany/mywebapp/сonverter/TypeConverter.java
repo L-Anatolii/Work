@@ -3,6 +3,7 @@ package com.mycompany.mywebapp.сonverter;
 import com.mycompany.mywebapp.service.Positions.JobPositions;
 import org.springframework.stereotype.Component;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,11 +33,6 @@ public class TypeConverter {
         throw new IllegalArgumentException("No job position found with "+jobPositions.getName());
     }
 
-//    public Date StringToDate(String dto) throws ParseException {
-////        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-////        Date date = (Date) formatter.parse(dto);
-//        return Date.valueOf(dto);
-//    }
 
     public String dateToString(Date date){
         SimpleDateFormat pattern = new SimpleDateFormat("dd.MM.yyyy");

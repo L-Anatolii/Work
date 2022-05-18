@@ -2,47 +2,22 @@ package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
 
-import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
-@Entity
-@Table(name="protocols")
+
 public class Protocol {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false, length = 45, name = "dateOfExamination")
     private Date dateOfExamination;
-
-    @Column(nullable = false, length = 45, name = "chairman")
-    @Enumerated(EnumType.STRING)
     private JobPositions chairman;
-
-    @Column(nullable = false, length = 45, name = "oneMemberOfCommission")
-    @Enumerated(EnumType.STRING)
     private JobPositions oneMemberOfCommission;
-
-    @Column(nullable = false, length = 45, name = "twoMemberOfCommission")
-    @Enumerated(EnumType.STRING)
     private JobPositions twoMemberOfCommission;
-
-    @Column(nullable = false, length = 45, name = "threeMemberOfCommission")
-    @Enumerated(EnumType.STRING)
     private JobPositions threeMemberOfCommission;
-
-    @Column(nullable = false, length = 45, name = "fourMemberOfCommission")
-    @Enumerated(EnumType.STRING)
     private JobPositions fourMemberOfCommission;
 
-    @OneToMany(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "protocolId")
-    private List<Employee> employees = new ArrayList<>();
-
-    //причина проверки знаний ???
+//    @OneToMany(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "protocol_id")
+//    private List<Employee> employees = new ArrayList<>();
 
     public Protocol() {
     }
@@ -101,14 +76,6 @@ public class Protocol {
 
     public void setFourMemberOfCommission(JobPositions fourMemberOfCommission) {
         this.fourMemberOfCommission = fourMemberOfCommission;
-    }
-
-    public List<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(List<Employee> employees) {
-        this.employees = employees;
     }
 
     @Override

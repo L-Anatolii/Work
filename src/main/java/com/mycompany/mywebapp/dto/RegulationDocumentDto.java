@@ -11,7 +11,6 @@ public class RegulationDocumentDto {
     private String jobPosition;
     private String dateOfApproval;
 
-
     public RegulationDocumentDto() {
     }
 

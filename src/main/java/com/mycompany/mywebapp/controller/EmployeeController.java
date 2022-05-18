@@ -1,7 +1,6 @@
 package com.mycompany.mywebapp.controller;
 
 import com.mycompany.mywebapp.dto.EmployeeDto;
-import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.service.EmployeeService;
 import com.mycompany.mywebapp.exception.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +30,7 @@ public class EmployeeController {
     public String showNewForm(Model model){
         model.addAttribute("employee", new EmployeeDto());
         model.addAttribute("pageTitle", "Add new Employee");
-        return "employee_form";
+        return "employee_create";
     }
 
     @PostMapping("/employees/save")
@@ -40,28 +39,24 @@ public class EmployeeController {
         ra.addFlashAttribute("message", "The employee has been saved successfully.");
         return "redirect:/employees";
     }
-
     @GetMapping(value = "/employees/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra){
-        try{
-            EmployeeDto employee =  employeeService.get(id);
-            model.addAttribute("employee", employee);
-            model.addAttribute("pageTitle", "Edit Employee (ID:" + id + ")");
-            return "employee_form";
-        }catch (EmployeeNotFoundException e){
-            ra.addFlashAttribute("message", e.getMessage());
-            return "redirect:/employees";
-        }
+        EmployeeDto employee =  employeeService.findById(id);
+        model.addAttribute("employee", employee);
+        model.addAttribute("pageTitle", "Update Employee (ID:" + id + ")");
+        return "employee_update";
+    }
+
+    @PostMapping(value = "/employees/update")
+    public String updateForm(EmployeeDto employeeDto, RedirectAttributes ra){
+        employeeService.update(employeeDto.getEmployeeId(), employeeDto);
+        return "redirect:/employees";
     }
 
     @GetMapping("/employees/delete/{id}")
     public String showDeleteForm(@PathVariable("id") Long id, RedirectAttributes ra) {
-        try {
-            employeeService.delete(id);
-            ra.addFlashAttribute("message",  "The Employee (ID:" + id + ") has been deleted" );
-        } catch (EmployeeNotFoundException e) {
-            ra.addFlashAttribute("message", e.getMessage());
-        }
+        employeeService.delete(id);
+        ra.addFlashAttribute("message",  "The Employee (ID:" + id + ") has been deleted" );
         return "redirect:/employees";
 
     }

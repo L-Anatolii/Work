@@ -1,5 +1,6 @@
 package com.mycompany.mywebapp.controller;
 
+import com.mycompany.mywebapp.dto.EmployeeDto;
 import com.mycompany.mywebapp.dto.SafetyTrainingProgramDto;
 import com.mycompany.mywebapp.entity.SafetyTrainingProgram;
 import com.mycompany.mywebapp.exception.ProgramNotFoundException;
@@ -31,7 +32,7 @@ public class SafetyTrainingProgramController {
     public String showNewForm(Model model){
         model.addAttribute("program", new SafetyTrainingProgramDto());
         model.addAttribute("pageTitle", "Add new Program");
-        return "program_form";
+        return "program_create";
     }
     @PostMapping("/programs/save")
     public String saveProgram(SafetyTrainingProgramDto programDto, RedirectAttributes ra) {
@@ -42,25 +43,22 @@ public class SafetyTrainingProgramController {
 
     @GetMapping(value = "/programs/edit/{id}")
     public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra){
-        try{
-            SafetyTrainingProgramDto program =  programService.get(id);
+            SafetyTrainingProgramDto program =  programService.findById(id);
             model.addAttribute("program", program);
             model.addAttribute("pageTitle", "Edit Program (ID:" + id + ")");
-            return "program_form";
-        }catch (ProgramNotFoundException e){
-            ra.addFlashAttribute("message", e.getMessage());
-            return "redirect:/programs";
-        }
+            return "program_update";
+    }
+
+    @PostMapping(value = "/programs/update")
+    public String updateForm(SafetyTrainingProgramDto programDto, RedirectAttributes ra){
+        programService.update(programDto.getProgramId(), programDto);
+        return "redirect:/programs";
     }
 
     @GetMapping("/programs/delete/{id}")
     public String showDeleteForm(@PathVariable("id") Long id, RedirectAttributes ra) {
-        try {
-            programService.delete(id);
-            ra.addFlashAttribute("message",  "The Employee (ID:" + id + ") has been deleted" );
-        } catch (ProgramNotFoundException e) {
-            ra.addFlashAttribute("message", e.getMessage());
-        }
+        programService.delete(id);
+        ra.addFlashAttribute("message",  "The Employee (ID:" + id + ") has been deleted" );
         return "redirect:/programs";
 
     }

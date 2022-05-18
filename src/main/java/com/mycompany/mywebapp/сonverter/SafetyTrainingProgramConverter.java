@@ -5,6 +5,7 @@ import com.mycompany.mywebapp.entity.SafetyTrainingProgram;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -21,7 +22,7 @@ public class SafetyTrainingProgramConverter {
         dto.setProgramNumber(program.getProgramNumber());
         dto.setDuration(program.getDuration());
         dto.setJobPosition(TypeConverter.enamToString(program.getJobPosition()));
-        dto.setDateOfApproval(converter.dateToString(program.getDateOfApproval()));
+        dto.setDateOfApproval(converter.dateToString((Date) program.getDateOfApproval()));
         return dto;
     }
 

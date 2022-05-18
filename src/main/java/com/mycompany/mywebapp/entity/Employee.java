@@ -2,50 +2,24 @@ package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
 
-import javax.persistence.*;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-
-@Entity
-@Table(name="employees")
 public class Employee {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @Column(nullable = false, length = 45, name = "firstName")
     private String firstName;
-
-    @Column(nullable = false, length = 45, name = "lastName")
     private String lastName;
-
-    @Column(nullable = false, length = 45, name = "patronymic")
     private String patronymic;
-
-    @Column(nullable = false, length = 45, name = "jobPosition")
-    @Enumerated(EnumType.STRING)
     private JobPositions jobPosition;
 
-
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "employees_safetyTrainingProgram",
-            joinColumns = {@JoinColumn(name = "employee_id")},
-            inverseJoinColumns = {@JoinColumn(name = "safetyTrainingProgram_id")})
-    private Set<SafetyTrainingProgram> programs = new HashSet<>();
-
-    public void addProgram(SafetyTrainingProgram program) {
-        programs.add(program);
-        program.getEmployees().add(this);
-    }
-
-    public void removeProgram(SafetyTrainingProgram program) {
-        programs.remove(program);
-        program.getEmployees().remove(this);
-    }
-
+//   private Set<SafetyTrainingProgram> programs = new HashSet<>();
+//
+//   public void addProgram(SafetyTrainingProgram program) {
+//       programs.add(program);
+//       program.getEmployees().add(this);
+//   }
+//   public void removeProgram(SafetyTrainingProgram program) {
+//       programs.remove(program);
+//       program.getEmployees().remove(this);
+//   }
 
     public Employee() {
     }
@@ -90,14 +64,6 @@ public class Employee {
         this.jobPosition = jobPosition;
     }
 
-    public Set<SafetyTrainingProgram> getPrograms() {
-        return programs;
-    }
-
-    public void setPrograms(Set<SafetyTrainingProgram> programs) {
-        this.programs = programs;
-    }
-
     @Override
     public String toString() {
         return "\nEmployee{" +
@@ -106,7 +72,6 @@ public class Employee {
                 ", \nlastName='" + lastName + '\'' +
                 ", \npatronymic='" + patronymic + '\'' +
                 ", \njobPosition=" + jobPosition +
-                ", \nprograms=" + programs +
                 '}';
     }
 

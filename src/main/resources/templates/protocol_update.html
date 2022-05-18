@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${pageTitle}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.3.1/css/bootstrap.min.css}"/>
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div class="text-center"><h2>[[${pageTitle}]]</h2></div>
+
+    <form th:action="@{/protocols/update}" method="post" th:object="${protocol}" style = "max-width: 500px; margin:0 auto;">
+        <div class="border border-secondary rounded p-3">
+            <input type="hidden" th:field="*{protocolId}" class="form-control"/>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Дата экзамена</label>
+                <div class="col-sm-8">
+                    <input type="date" th:field="*{dateOfExamination}" class="form-control" maxlength="45"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Председатель комиссии</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{chairman}" class="form-control" required minlength="2" maxlength="45"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Член комиссии</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{oneMemberOfCommission}" class="form-control" required minlength="5" maxlength="45"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Член комиссии</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{twoMemberOfCommission}" class="form-control" required minlength="5" maxlength="45"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Член комиссии</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{threeMemberOfCommission}" class="form-control" required minlength="5" maxlength="45"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4 col-form-label">Член комиссии</label>
+                <div class="col-sm-8">
+                    <input type="text" th:field="*{fourMemberOfCommission}" class="form-control" required minlength="5" maxlength="45"/>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary m-2">Save</button>
+                <button type="button" class="btn btn-secondary m-2" onclick="cacelForma()">Cancel</button>
+
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    function cacelForma(){
+        window.location = "[[@{/programs}]]";
+    }
+</script>
+</body>
+</html>
+

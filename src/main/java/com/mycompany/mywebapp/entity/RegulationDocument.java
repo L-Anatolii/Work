@@ -1,39 +1,17 @@
 package com.mycompany.mywebapp.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.mycompany.mywebapp.service.Positions.JobPositions;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.*;
-import java.time.LocalDate;
 import java.util.Date;
 
-@Entity
-@Table(name="regulationDocuments")
 public class RegulationDocument {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Long id;
-
-    @Column(nullable = false, length = 45, name = "documentNumber")
     private Integer documentNumber;
-
-    @Column(nullable = false, length = 45, name = "titleOfDocument")
     private String titleOfDocument;
-
-    //кем утверждена(выбрать должность, подтянуть ФИО)
-    @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 45, name = "approvedTheDocument")
     private JobPositions jobPosition;
-
-    //дата утверждения
-
-//    @Temporal(value = TemporalType.DATE)
-    @Column(name = "dateOfApproval")
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date dateOfApproval;
-
 
     public RegulationDocument() {
     }

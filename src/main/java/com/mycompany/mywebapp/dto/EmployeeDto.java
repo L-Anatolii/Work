@@ -1,6 +1,5 @@
 package com.mycompany.mywebapp.dto;
 
-import com.mycompany.mywebapp.service.Positions.JobPositions;
 import org.springframework.stereotype.Component;
 
 @Component

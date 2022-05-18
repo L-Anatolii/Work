@@ -5,6 +5,7 @@ import com.mycompany.mywebapp.entity.RegulationDocument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.sql.Date;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +21,7 @@ public class RegulationDocumentConverter {
         dto.setDocumentNumber(document.getDocumentNumber());
         dto.setTitleOfDocument(document.getTitleOfDocument());
         dto.setJobPosition(TypeConverter.enamToString(document.getJobPosition()));
-        dto.setDateOfApproval(converter.dateToString(document.getDateOfApproval()));
+        dto.setDateOfApproval(converter.dateToString((Date) document.getDateOfApproval()));
         return dto;
     }
 

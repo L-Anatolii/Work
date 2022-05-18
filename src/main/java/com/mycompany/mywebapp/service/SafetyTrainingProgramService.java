@@ -2,47 +2,40 @@ package com.mycompany.mywebapp.service;
 
 import com.mycompany.mywebapp.dto.SafetyTrainingProgramDto;
 import com.mycompany.mywebapp.entity.SafetyTrainingProgram;
-import com.mycompany.mywebapp.entity.SafetyTrainingProgramRepository;
-import com.mycompany.mywebapp.exception.ProgramNotFoundException;
-import com.mycompany.mywebapp.сonverter.EmployeeConverter;
+import com.mycompany.mywebapp.jdbc.dao.SafetyTrainingProgramDao;
 import com.mycompany.mywebapp.сonverter.SafetyTrainingProgramConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class SafetyTrainingProgramService {
 
     @Autowired
-    private SafetyTrainingProgramRepository repoProgram;
+    private SafetyTrainingProgramDao programDao;
 
     @Autowired
     private SafetyTrainingProgramConverter converter;
 
     public List<SafetyTrainingProgramDto> getAllPrograms(){
-        List<SafetyTrainingProgram> programs = (List<SafetyTrainingProgram>) repoProgram.findAll();
+        List<SafetyTrainingProgram> programs = programDao.findAll();
         return converter.entityToDto(programs);
     }
 
     public void save(SafetyTrainingProgramDto program){
-        repoProgram.save(converter.dtoToEntity(program));
+        programDao.save(converter.dtoToEntity(program));
     }
 
-    public SafetyTrainingProgramDto get(Long id) throws ProgramNotFoundException{
-        Optional<SafetyTrainingProgram> result = repoProgram.findById(id);
-        if(result.isPresent()){
-            return converter.entityToDto(result.get());
-        }
-        throw new ProgramNotFoundException("Could not find any programs with ID"+ id);
+    public SafetyTrainingProgramDto findById(Long id){
+        SafetyTrainingProgram program = programDao.findById(id);
+        return converter.entityToDto(program);
     }
 
-    public void delete(Long id) throws ProgramNotFoundException{
-        Long count = repoProgram.countById(id);
-        if(count == null || count == 0){
-            throw new ProgramNotFoundException("Could not find any programs with ID"+ id);
-        }
-        repoProgram.deleteById(id);
+    public void update(Long id, SafetyTrainingProgramDto programDto) {
+        programDao.update(id, converter.dtoToEntity(programDto));
+    }
+    public void delete(Long id){
+        programDao.delete(id);
     }
 }
