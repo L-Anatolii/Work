@@ -16,9 +16,9 @@ public class SafetyTrainingProgramDto {
     private String titleOfProgram;
     private Integer programNumber;
     private Integer duration;
-    private String jobPosition;
+    private String approvedTheProgram;
     private String dateOfApproval;
-    private Set<Employee> employees;
+//    private Set<Employee> employees;
 
     public SafetyTrainingProgramDto() {
     }
@@ -55,12 +55,12 @@ public class SafetyTrainingProgramDto {
         this.duration = duration;
     }
 
-    public String getJobPosition() {
-        return jobPosition;
+    public String getApprovedTheProgram() {
+        return approvedTheProgram;
     }
 
-    public void setJobPosition(String jobPosition) {
-        this.jobPosition = jobPosition;
+    public void setApprovedTheProgram(String approvedTheProgram) {
+        this.approvedTheProgram = approvedTheProgram;
     }
 
     public String getDateOfApproval() {
@@ -71,12 +71,5 @@ public class SafetyTrainingProgramDto {
         this.dateOfApproval = dateOfApproval;
     }
 
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
-    }
 
 }

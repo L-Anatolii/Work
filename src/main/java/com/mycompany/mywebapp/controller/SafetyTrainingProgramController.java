@@ -42,7 +42,7 @@ public class SafetyTrainingProgramController {
     }
 
     @GetMapping(value = "/programs/edit/{id}")
-    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra){
+    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) throws ProgramNotFoundException {
             SafetyTrainingProgramDto program =  programService.findById(id);
             model.addAttribute("program", program);
             model.addAttribute("pageTitle", "Edit Program (ID:" + id + ")");
@@ -51,12 +51,12 @@ public class SafetyTrainingProgramController {
 
     @PostMapping(value = "/programs/update")
     public String updateForm(SafetyTrainingProgramDto programDto, RedirectAttributes ra){
-        programService.update(programDto.getProgramId(), programDto);
+        programService.save(programDto);
         return "redirect:/programs";
     }
 
     @GetMapping("/programs/delete/{id}")
-    public String showDeleteForm(@PathVariable("id") Long id, RedirectAttributes ra) {
+    public String showDeleteForm(@PathVariable("id") Long id, RedirectAttributes ra) throws ProgramNotFoundException {
         programService.delete(id);
         ra.addFlashAttribute("message",  "The Employee (ID:" + id + ") has been deleted" );
         return "redirect:/programs";

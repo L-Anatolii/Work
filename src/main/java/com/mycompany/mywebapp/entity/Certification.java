@@ -1,39 +1,26 @@
 package com.mycompany.mywebapp.entity;
 
-import org.springframework.stereotype.Component;
-@Component
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Table("certifications")
+@Data
+@AllArgsConstructor
 public class Certification {
 
-    private Long id;
+    @Id
+    private Long certification_id;
+    private Long employee_id;
+    private Long safety_training_program_id;
     private Integer number;
 
-//    private SafetyTrainingProgram program;
 
     public Certification() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public Integer getNumber() {
-        return number;
-    }
-
-    public void setNumber(Integer number) {
-        this.number = number;
-    }
-
-
-    @Override
-    public String toString() {
-        return "\nCertification{" +
-                "\nid=" + id +
-                ", \nnumber=" + number +
-                '}';
-    }
 }

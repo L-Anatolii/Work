@@ -1,12 +1,17 @@
 package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.relational.core.mapping.Table;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
-
+@Table("protocols")
 public class Protocol {
-
+    @Id
     private Long id;
     private Date dateOfExamination;
     private JobPositions chairman;
@@ -15,11 +20,22 @@ public class Protocol {
     private JobPositions threeMemberOfCommission;
     private JobPositions fourMemberOfCommission;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "protocol_id")
-//    private List<Employee> employees = new ArrayList<>();
+
+    private List<Employee> employees = new ArrayList<>();
 
     public Protocol() {
+    }
+
+    @PersistenceConstructor
+    public Protocol(Long id, Date dateOfExamination, JobPositions chairman, JobPositions oneMemberOfCommission, JobPositions twoMemberOfCommission, JobPositions threeMemberOfCommission, JobPositions fourMemberOfCommission) {
+        this.id = id;
+        this.dateOfExamination = dateOfExamination;
+        this.chairman = chairman;
+        this.oneMemberOfCommission = oneMemberOfCommission;
+        this.twoMemberOfCommission = twoMemberOfCommission;
+        this.threeMemberOfCommission = threeMemberOfCommission;
+        this.fourMemberOfCommission = fourMemberOfCommission;
+
     }
 
     public Long getId() {
@@ -78,6 +94,14 @@ public class Protocol {
         this.fourMemberOfCommission = fourMemberOfCommission;
     }
 
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+
     @Override
     public String toString() {
         return "\nProtocol{" +
@@ -90,4 +114,5 @@ public class Protocol {
                 ", \nfourMemberOfCommission=" + fourMemberOfCommission +
                 '}';
     }
+
 }

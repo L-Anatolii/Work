@@ -21,7 +21,7 @@ public class SafetyTrainingProgramConverter {
         dto.setTitleOfProgram(program.getTitleOfProgram());
         dto.setProgramNumber(program.getProgramNumber());
         dto.setDuration(program.getDuration());
-        dto.setJobPosition(TypeConverter.enamToString(program.getJobPosition()));
+        dto.setApprovedTheProgram(TypeConverter.enamToString(program.getApprovedTheProgram()));
         dto.setDateOfApproval(converter.dateToString((Date) program.getDateOfApproval()));
         return dto;
     }
@@ -32,10 +32,11 @@ public class SafetyTrainingProgramConverter {
 
     public SafetyTrainingProgram dtoToEntity(SafetyTrainingProgramDto dto){
         SafetyTrainingProgram program =  new SafetyTrainingProgram();
+        program.setId(dto.getProgramId());
         program.setTitleOfProgram(dto.getTitleOfProgram());
         program.setProgramNumber(dto.getProgramNumber());
         program.setDuration(dto.getDuration());
-        program.setJobPosition(TypeConverter.StringToEnam(dto.getJobPosition()));
+        program.setApprovedTheProgram(TypeConverter.StringToEnam(dto.getApprovedTheProgram()));
         program.setDateOfApproval(converter.stringToDate(dto.getDateOfApproval()));
         return program;
     }

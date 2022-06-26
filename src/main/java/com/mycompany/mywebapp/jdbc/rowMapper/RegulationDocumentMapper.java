@@ -1,4 +1,4 @@
-package com.mycompany.mywebapp.jdbc.mapper;
+package com.mycompany.mywebapp.jdbc.rowMapper;
 
 import com.mycompany.mywebapp.entity.RegulationDocument;
 import com.mycompany.mywebapp.service.Positions.JobPositions;
@@ -12,10 +12,10 @@ public class RegulationDocumentMapper implements RowMapper<RegulationDocument> {
     public RegulationDocument mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         RegulationDocument  document= new RegulationDocument();
         document.setId(resultSet.getLong("id"));
-        document.setDocumentNumber(resultSet.getInt("documentNumber"));
-        document.setTitleOfDocument(resultSet.getString("titleofdocument"));
-        document.setJobPosition(JobPositions.valueOf(resultSet.getString("approvedthedocument")));
-        document.setDateOfApproval(resultSet.getDate("dateofapproval"));
+        document.setDocumentNumber(resultSet.getInt("document_number"));
+        document.setTitleOfDocument(resultSet.getString("title_of_document"));
+        document.setApprovedTheDocument(JobPositions.valueOf(resultSet.getString("approved_the_document")));
+        document.setDateOfApproval(resultSet.getDate("date_of_approval"));
         return document;
     }
 }

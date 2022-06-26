@@ -20,7 +20,7 @@ public class RegulationDocumentConverter {
         dto.setDocumentId(document.getId());
         dto.setDocumentNumber(document.getDocumentNumber());
         dto.setTitleOfDocument(document.getTitleOfDocument());
-        dto.setJobPosition(TypeConverter.enamToString(document.getJobPosition()));
+        dto.setApprovedTheDocument(TypeConverter.enamToString(document.getApprovedTheDocument()));
         dto.setDateOfApproval(converter.dateToString((Date) document.getDateOfApproval()));
         return dto;
     }
@@ -34,7 +34,7 @@ public class RegulationDocumentConverter {
         document.setId(dto.getDocumentId());
         document.setDocumentNumber(dto.getDocumentNumber());
         document.setTitleOfDocument(dto.getTitleOfDocument());
-        document.setJobPosition(TypeConverter.StringToEnam(dto.getJobPosition()));
+        document.setApprovedTheDocument(TypeConverter.StringToEnam(dto.getApprovedTheDocument()));
         document.setDateOfApproval(converter.stringToDate(dto.getDateOfApproval()));
         return document;
     }

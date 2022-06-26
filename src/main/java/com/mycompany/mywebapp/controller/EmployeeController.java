@@ -40,21 +40,15 @@ public class EmployeeController {
         return "redirect:/employees";
     }
     @GetMapping(value = "/employees/edit/{id}")
-    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra){
+    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) throws EmployeeNotFoundException {
         EmployeeDto employee =  employeeService.findById(id);
         model.addAttribute("employee", employee);
         model.addAttribute("pageTitle", "Update Employee (ID:" + id + ")");
         return "employee_update";
     }
 
-    @PostMapping(value = "/employees/update")
-    public String updateForm(EmployeeDto employeeDto, RedirectAttributes ra){
-        employeeService.update(employeeDto.getEmployeeId(), employeeDto);
-        return "redirect:/employees";
-    }
-
     @GetMapping("/employees/delete/{id}")
-    public String showDeleteForm(@PathVariable("id") Long id, RedirectAttributes ra) {
+    public String showDeleteForm(@PathVariable("id") Long id, RedirectAttributes ra) throws EmployeeNotFoundException {
         employeeService.delete(id);
         ra.addFlashAttribute("message",  "The Employee (ID:" + id + ") has been deleted" );
         return "redirect:/employees";

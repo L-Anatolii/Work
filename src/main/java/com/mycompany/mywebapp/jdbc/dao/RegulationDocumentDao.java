@@ -2,7 +2,7 @@ package com.mycompany.mywebapp.jdbc.dao;
 
 import com.mycompany.mywebapp.entity.RegulationDocument;
 import com.mycompany.mywebapp.jdbc.DAO;
-import com.mycompany.mywebapp.jdbc.mapper.RegulationDocumentMapper;
+import com.mycompany.mywebapp.jdbc.rowMapper.RegulationDocumentMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -32,19 +32,19 @@ public class RegulationDocumentDao implements DAO<RegulationDocument, Long> {
 
     @Override
     public void save(RegulationDocument document) {
-        jdbcTemplate.update("INSERT INTO regulationdocuments(documentnumber, titleofdocument, approvedthedocument, dateofapproval) VALUES(?,?,?,?)",
+        jdbcTemplate.update("INSERT INTO regulationdocuments(document_number, title_of_document, approved_the_document, date_of_approval) VALUES(?,?,?,?)",
                 document.getDocumentNumber(),
                 document.getTitleOfDocument(),
-                document.getJobPosition().toString(),
+                document.getApprovedTheDocument().toString(),
                 document.getDateOfApproval());
     }
 
     @Override
     public void update(Long id, RegulationDocument updateDocument) {
-        jdbcTemplate.update("UPDATE regulationdocuments SET documentnumber=?, titleofdocument=?, approvedthedocument=?, dateofapproval=? WHERE id=?",
+        jdbcTemplate.update("UPDATE regulationdocuments SET document_number=?, title_of_document=?, approved_the_document=?, date_of_approval=? WHERE id=?",
                 updateDocument.getDocumentNumber(),
                 updateDocument.getTitleOfDocument(),
-                updateDocument.getJobPosition().toString(),
+                updateDocument.getApprovedTheDocument().toString(),
                 updateDocument.getDateOfApproval(),
                 id);
     }

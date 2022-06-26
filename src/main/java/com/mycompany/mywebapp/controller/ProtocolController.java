@@ -39,21 +39,16 @@ public class ProtocolController {
         return "redirect:/protocols";
     }
     @GetMapping(value = "/protocols/edit/{id}")
-    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra){
+    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) throws Exception {
         ProtocolDto protocol =  protocolService.findById(id);
         model.addAttribute("protocol", protocol);
         model.addAttribute("pageTitle", "Update Protocol (ID:" + id + ")");
         return "protocol_update";
     }
 
-    @PostMapping(value = "/protocols/update")
-    public String updateForm(ProtocolDto protocolDto, RedirectAttributes ra){
-        protocolService.update(protocolDto.getProtocolId(), protocolDto);
-        return "redirect:/protocols";
-    }
 
     @GetMapping("/protocols/delete/{id}")
-    public String showDeleteForm(@PathVariable("id") Long id, RedirectAttributes ra) {
+    public String showDeleteForm(@PathVariable("id") Long id, RedirectAttributes ra) throws Exception {
         protocolService.delete(id);
         ra.addFlashAttribute("message",  "The Protocol (ID:" + id + ") has been deleted" );
         return "redirect:/protocols";

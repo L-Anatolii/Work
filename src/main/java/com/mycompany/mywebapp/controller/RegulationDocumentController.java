@@ -45,7 +45,7 @@ public class RegulationDocumentController {
 
 
     @GetMapping(value = "/regulationDocuments/edit/{id}")
-    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra){
+    public String showEditForm(@PathVariable("id") Long id, Model model, RedirectAttributes ra) throws RegulationDocumentNotFoundException {
             RegulationDocumentDto regulationDocument =  regulationDocumentServise.findById(id);
             model.addAttribute("regulationDocument", regulationDocument);
             model.addAttribute("pageTitle", "Edit Regulation document (ID:" + id + ")");
@@ -54,12 +54,12 @@ public class RegulationDocumentController {
 
     @PostMapping(value = "/regulationDocuments/update")
     public String updateForm(RegulationDocumentDto documentDto, RedirectAttributes ra){
-        regulationDocumentServise.update(documentDto.getDocumentId(), documentDto);
+        regulationDocumentServise.save(documentDto);
         return "redirect:/regulationDocuments";
     }
 
     @GetMapping("/regulationDocuments/delete/{id}")
-    public String showDeleteForm(@PathVariable("id") Long id, RedirectAttributes ra) {
+    public String showDeleteForm(@PathVariable("id") Long id, RedirectAttributes ra) throws RegulationDocumentNotFoundException {
         regulationDocumentServise.delete(id);
         ra.addFlashAttribute("message",  "The Regulation documents (ID:" + id + ") has been deleted" );
         return "redirect:/regulationDocuments";

@@ -1,14 +1,37 @@
 package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.relational.core.mapping.Table;
 
+import java.util.ArrayList;
+import java.util.List;
+
+@Table("employees")
+@Data
+@AllArgsConstructor
 public class Employee {
 
+    @Id
     private Long id;
     private String firstName;
     private String lastName;
     private String patronymic;
     private JobPositions jobPosition;
+
+
+    private List<Certification> certifications = new ArrayList<>();
+
+    private List<SafetyTrainingProgram> programs = new ArrayList<>();
+
+
+
+    public Employee() {
+
+    }
+
 
 //   private Set<SafetyTrainingProgram> programs = new HashSet<>();
 //
@@ -21,58 +44,8 @@ public class Employee {
 //       program.getEmployees().remove(this);
 //   }
 
-    public Employee() {
-    }
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
-    public JobPositions getJobPosition() {
-        return jobPosition;
-    }
-
-    public void setJobPosition(JobPositions jobPosition) {
-        this.jobPosition = jobPosition;
-    }
-
-    @Override
-    public String toString() {
-        return "\nEmployee{" +
-                "\nid=" + id +
-                ", \nfirstName='" + firstName + '\'' +
-                ", \nlastName='" + lastName + '\'' +
-                ", \npatronymic='" + patronymic + '\'' +
-                ", \njobPosition=" + jobPosition +
-                '}';
-    }
 
 }

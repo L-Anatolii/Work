@@ -1,19 +1,31 @@
 package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.PersistenceConstructor;
+import org.springframework.data.relational.core.mapping.Table;
 
 import java.util.Date;
-
+@Table("regulationdocuments")
 public class RegulationDocument {
 
-
+    @Id
     private Long id;
     private Integer documentNumber;
     private String titleOfDocument;
-    private JobPositions jobPosition;
+    private JobPositions approvedTheDocument;
     private Date dateOfApproval;
 
     public RegulationDocument() {
+    }
+
+    @PersistenceConstructor
+    public RegulationDocument(Long id, Integer documentNumber, String titleOfDocument, JobPositions approvedTheDocument, Date dateOfApproval) {
+        this.id = id;
+        this.documentNumber = documentNumber;
+        this.titleOfDocument = titleOfDocument;
+        this.approvedTheDocument = approvedTheDocument;
+        this.dateOfApproval = dateOfApproval;
     }
 
     public Long getId() {
@@ -40,12 +52,12 @@ public class RegulationDocument {
         this.titleOfDocument = titleOfDocument;
     }
 
-    public JobPositions getJobPosition() {
-        return jobPosition;
+    public JobPositions getApprovedTheDocument() {
+        return approvedTheDocument;
     }
 
-    public void setJobPosition(JobPositions jobPosition) {
-        this.jobPosition = jobPosition;
+    public void setApprovedTheDocument(JobPositions approvedTheDocument) {
+        this.approvedTheDocument = approvedTheDocument;
     }
 
     public Date getDateOfApproval() {
@@ -63,7 +75,7 @@ public class RegulationDocument {
                 "\nid=" + id +
                 ", \ndocumentNumber=" + documentNumber +
                 ", \ntitleOfDocument='" + titleOfDocument + '\'' +
-                ", \njobPosition=" + jobPosition +
+                ", \njobPosition=" + approvedTheDocument +
                 ", \ndateOfApproval=" + dateOfApproval +
                 '}';
     }

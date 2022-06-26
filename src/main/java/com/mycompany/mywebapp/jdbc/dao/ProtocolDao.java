@@ -2,7 +2,7 @@ package com.mycompany.mywebapp.jdbc.dao;
 
 import com.mycompany.mywebapp.entity.Protocol;
 import com.mycompany.mywebapp.jdbc.DAO;
-import com.mycompany.mywebapp.jdbc.mapper.ProtocolMapper;
+import com.mycompany.mywebapp.jdbc.rowMapper.ProtocolMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -31,12 +31,12 @@ public class ProtocolDao implements DAO<Protocol, Long> {
 
     @Override
     public void save(Protocol protocol) {
-        jdbcTemplate.update("INSERT INTO protocols(dateofexamination, " +
+        jdbcTemplate.update("INSERT INTO protocols(date_of_examination, " +
                                                         "chairman, " +
-                                                        "onememberofcommission, " +
-                                                        "twomemberofcommission, " +
-                                                        "threememberofcommission, " +
-                                                        "fourmemberofcommission) VALUES(?,?,?,?,?,?)",
+                                                        "one_member_of_commission, " +
+                                                        "two_member_of_commission, " +
+                                                        "three_member_of_commission, " +
+                                                        "four_member_of_commission) VALUES(?,?,?,?,?,?)",
                 protocol.getDateOfExamination(),
                 protocol.getChairman().toString(),
                 protocol.getOneMemberOfCommission().toString(),
@@ -47,12 +47,12 @@ public class ProtocolDao implements DAO<Protocol, Long> {
 
     @Override
     public void update(Long id, Protocol updateProtocol) {
-        jdbcTemplate.update("UPDATE protocols SET dateofexamination=?, " +
+        jdbcTemplate.update("UPDATE protocols SET date_of_examination=?, " +
                                                         "chairman=?, " +
-                                                        "onememberofcommission=?, " +
-                                                        "twomemberofcommission=? , " +
-                                                        "threememberofcommission=?, " +
-                                                        "fourmemberofcommission=? WHERE id=?",
+                                                        "one_member_of_commission=?, " +
+                                                        "two_member_of_commission=? , " +
+                                                        "three_member_of_commission=?, " +
+                                                        "four_member_of_commission=? WHERE id=?",
                 updateProtocol.getDateOfExamination(),
                 updateProtocol.getChairman().toString(),
                 updateProtocol.getOneMemberOfCommission().toString(),

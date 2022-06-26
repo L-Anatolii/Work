@@ -9,7 +9,7 @@
 <div class="container-fluid text-center">
     <div class="text-center"><h2>[[${pageTitle}]]</h2></div>
 
-    <form th:action="@{/protocols/update}" method="post" th:object="${protocol}" style = "max-width: 500px; margin:0 auto;">
+    <form th:action="@{/protocols/save}" method="post" th:object="${protocol}" style = "max-width: 500px; margin:0 auto;">
         <div class="border border-secondary rounded p-3">
             <input type="hidden" th:field="*{protocolId}" class="form-control"/>
             <div class="form-group row">

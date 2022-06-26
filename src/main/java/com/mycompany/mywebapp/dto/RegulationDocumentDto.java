@@ -8,7 +8,7 @@ public class RegulationDocumentDto {
     private Long documentId;
     private Integer documentNumber;
     private String titleOfDocument;
-    private String jobPosition;
+    private String approvedTheDocument;
     private String dateOfApproval;
 
     public RegulationDocumentDto() {
@@ -38,12 +38,12 @@ public class RegulationDocumentDto {
         this.titleOfDocument = titleOfDocument;
     }
 
-    public String getJobPosition() {
-        return jobPosition;
+    public String getApprovedTheDocument() {
+        return approvedTheDocument;
     }
 
-    public void setJobPosition(String jobPosition) {
-        this.jobPosition = jobPosition;
+    public void setApprovedTheDocument(String approvedTheDocument) {
+        this.approvedTheDocument = approvedTheDocument;
     }
 
     public String getDateOfApproval() {
