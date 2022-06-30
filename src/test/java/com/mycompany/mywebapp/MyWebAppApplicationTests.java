@@ -1,13 +1,6 @@
 package com.mycompany.mywebapp;
 
-import com.mycompany.mywebapp.dto.EmployeeDto;
 import com.mycompany.mywebapp.entity.*;
-import com.mycompany.mywebapp.exception.RegulationDocumentNotFoundException;
-import com.mycompany.mywebapp.jdbc.dao.RegulationDocumentDao;
-import com.mycompany.mywebapp.jdbc.dao.SafetyTrainingProgramDao;
-import com.mycompany.mywebapp.service.Positions.JobPositions;
-import com.mycompany.mywebapp.service.RegulationDocumentServise;
-import com.mycompany.mywebapp.сonverter.EmployeeConverter;
 import com.mycompany.mywebapp.сonverter.TypeConverter;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -262,21 +255,5 @@ class MyWebAppApplicationTests {
 //
 //    }
 
-    @Autowired
-    TypeConverter converter;
-
-    @Autowired
-    SafetyTrainingProgramDao documentDao;
-    @Test
-    public void Protocol2(){
-//        List<RegulationDocument> document = documentDao.findAll();
-        SafetyTrainingProgram document2 = documentDao.findById(1L);
-        java.util.Date newDate = new Date(document2.getDateOfApproval().getTime());
-        System.out.println(newDate);
-//        RegulationDocument document12 = document.get(1);
-//        System.out.println(converter.dateToString((Date) document2.getDateOfApproval()));
-//        for(RegulationDocument d: document ){
-//            System.out.println(d);
-    }
 
 }

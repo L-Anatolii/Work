@@ -1,26 +1,62 @@
 package com.mycompany.mywebapp.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.ArrayList;
-import java.util.List;
+import javax.persistence.*;
+import java.io.Serializable;
 
-@Table("certifications")
-@Data
-@AllArgsConstructor
+@Entity
+@Table("certification")
 public class Certification {
 
-    @Id
-    private Long certification_id;
-    private Long employee_id;
-    private Long safety_training_program_id;
-    private Integer number;
 
+    @EmbeddedId
+    EmployeeProgramKey id;
+
+    @ManyToOne
+    @MapsId("employeeId")
+    @JoinColumn(name = "employee_id")
+    Employee employee;
+
+    @ManyToOne
+    @MapsId("programId")
+    @JoinColumn(name = "safety_training_program_id")
+    SafetyTrainingProgram program;
+
+    private Integer number;
 
     public Certification() {
     }
 
+    public EmployeeProgramKey getId() {
+        return id;
+    }
+
+    public void setId(EmployeeProgramKey id) {
+        this.id = id;
+    }
+
+    public Employee getEmployee() {
+        return employee;
+    }
+
+    public void setEmployee(Employee employee) {
+        this.employee = employee;
+    }
+
+    public SafetyTrainingProgram getProgram() {
+        return program;
+    }
+
+    public void setProgram(SafetyTrainingProgram program) {
+        this.program = program;
+    }
+
+    public Integer getNumber() {
+        return number;
+    }
+
+    public void setNumber(Integer number) {
+        this.number = number;
+    }
 }

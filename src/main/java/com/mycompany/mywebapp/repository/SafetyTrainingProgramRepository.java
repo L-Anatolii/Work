@@ -12,9 +12,9 @@ import java.util.Set;
 public interface SafetyTrainingProgramRepository extends CrudRepository<SafetyTrainingProgram, Long> {
     Long countById(Long id);
 
-    @Query("SELECT s.* " +
-            "FROM safety_training_programs s " +
-            "JOIN employee_program ep ON s.id=ep.safety_training_program_id " +
-            "WHERE ep.safety_training_program_id = :id")
-    Set<SafetyTrainingProgram> findByProgramId(@Param("id") Long id);
+//    @Query("SELECT s.* " +
+//            "FROM safety_training_programs s " +
+//            "JOIN employee_program ep ON s.id=ep.safety_training_program_id " +
+//            "WHERE ep.safety_training_program_id = :id")
+//    Set<SafetyTrainingProgram> findByProgramId(@Param("id") Long id);
 }

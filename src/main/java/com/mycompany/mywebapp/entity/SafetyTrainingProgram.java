@@ -1,126 +1,105 @@
 package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.ArrayList;
+import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
-@Table("safety_training_programs")
-@Data
-@AllArgsConstructor
+@Entity
+@Table("safety_training_program")
 public class SafetyTrainingProgram {
+
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "title_of_program")
     private String titleOfProgram;
+    @Column (name = "program_number")
     private Integer programNumber;
+    @Column (name = "duration")
     private Integer duration;
+    @Column (name = "approved_the_program")
     private JobPositions approvedTheProgram;
+    @Column (name = "date_of_approval")
     private Date dateOfApproval;
 
-    private List<Certification> certifications = new ArrayList<>();
+    @OneToMany(mappedBy = "program")
+    Set<Certification> certifications;
 
-    private List<Employee> employees = new ArrayList<>();
-
-    // Может нужно указать???
-    // private Long employee_id;
+    @ManyToMany(mappedBy = "programs")
+    private Set<Employee> employees = new HashSet<>();
 
     public SafetyTrainingProgram() {
     }
 
+    public Long getId() {
+        return id;
+    }
 
-    //    @ManyToMany(mappedBy = "programs")
-//    private Set<Employee> employees = new HashSet<>();
-//
-//    @OneToOne( cascade = CascadeType.ALL)
-//    @JoinColumn(name = "certificationId")
-//    @MappedCollection(idColumn = "safety_training_program_id")
-//    private Certification certification;
-//    private Set<EmployeeRef> employees = new HashSet<>();
-//
-//
-//    public void addEmployee(Employee employee){
-//        this.employees.add(new EmployeeRef(employee.getId()));
-//    }
-//    public Set<Long> getEmployeeIds(){
-//        return this.employees.stream()
-//                .map(EmployeeRef::getEmployeeId)
-//                .collect(Collectors.toSet());
-//    }
-//    public SafetyTrainingProgram() {
-//    }
-//
-//    @PersistenceConstructor
-//    public SafetyTrainingProgram(Long id, String titleOfProgram, Integer programNumber, Integer duration, JobPositions approvedTheProgram, Date dateOfApproval, Certification certification, Set<EmployeeRef> employees) {
-//        this.id = id;
-//        this.titleOfProgram = titleOfProgram;
-//        this.programNumber = programNumber;
-//        this.duration = duration;
-//        this.approvedTheProgram = approvedTheProgram;
-//        this.dateOfApproval = dateOfApproval;
-//        this.employees = employees;
-//    }
-//
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-//
-//    public String getTitleOfProgram() {
-//        return titleOfProgram;
-//    }
-//
-//    public void setTitleOfProgram(String titleOfProgram) {
-//        this.titleOfProgram = titleOfProgram;
-//    }
-//
-//    public Integer getProgramNumber() {
-//        return programNumber;
-//    }
-//
-//    public void setProgramNumber(Integer programNumber) {
-//        this.programNumber = programNumber;
-//    }
-//
-//    public Integer getDuration() {
-//        return duration;
-//    }
-//
-//    public void setDuration(Integer duration) {
-//        this.duration = duration;
-//    }
-//
-//    public JobPositions getApprovedTheProgram() {
-//        return approvedTheProgram;
-//    }
-//
-//    public void setApprovedTheProgram(JobPositions approvedTheProgram) {
-//        this.approvedTheProgram = approvedTheProgram;
-//    }
-//
-//    public Date getDateOfApproval() {
-//        return dateOfApproval;
-//    }
-//
-//    public void setDateOfApproval(Date dateOfApproval) {
-//        this.dateOfApproval = dateOfApproval;
-//    }
-//
-//    public Set<EmployeeRef> getEmployees() {
-//        return employees;
-//    }
-//
-//    public void setEmployees(Set<EmployeeRef> employees) {
-//        this.employees = employees;
-//    }
-//
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitleOfProgram() {
+        return titleOfProgram;
+    }
+
+    public void setTitleOfProgram(String titleOfProgram) {
+        this.titleOfProgram = titleOfProgram;
+    }
+
+    public Integer getProgramNumber() {
+        return programNumber;
+    }
+
+    public void setProgramNumber(Integer programNumber) {
+        this.programNumber = programNumber;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public JobPositions getApprovedTheProgram() {
+        return approvedTheProgram;
+    }
+
+    public void setApprovedTheProgram(JobPositions approvedTheProgram) {
+        this.approvedTheProgram = approvedTheProgram;
+    }
+
+    public Date getDateOfApproval() {
+        return dateOfApproval;
+    }
+
+    public void setDateOfApproval(Date dateOfApproval) {
+        this.dateOfApproval = dateOfApproval;
+    }
+
+    public Set<Certification> getCertifications() {
+        return certifications;
+    }
+
+    public void setCertifications(Set<Certification> certifications) {
+        this.certifications = certifications;
+    }
+
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+}
+    //
 //    @Override
 //    public String toString() {
 //        return "\nSafetyTrainingProgram{" +
@@ -131,7 +110,6 @@ public class SafetyTrainingProgram {
 //                ", \njobPosition=" + approvedTheProgram +
 //                ", \ndateOfApproval=" + dateOfApproval +
 //                '}';
-}
 
 
 

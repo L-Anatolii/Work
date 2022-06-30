@@ -2,8 +2,6 @@ package com.mycompany.mywebapp.service;
 
 import com.mycompany.mywebapp.dto.ProtocolDto;
 import com.mycompany.mywebapp.entity.Protocol;
-import com.mycompany.mywebapp.exception.EmployeeNotFoundException;
-import com.mycompany.mywebapp.jdbc.dao.ProtocolDao;
 import com.mycompany.mywebapp.repository.ProtocolRepository;
 import com.mycompany.mywebapp.сonverter.ProtocolConverter;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,41 +1,38 @@
 package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
-import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.PersistenceConstructor;
 import org.springframework.data.relational.core.mapping.Table;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import java.util.*;
 
-@Table("protocols")
+@Entity
+@Table("protocol")
 public class Protocol {
+
     @Id
     private Long id;
+    @Column(name = "date_of_examination")
     private Date dateOfExamination;
+    @Column (name = "chairman")
     private JobPositions chairman;
+    @Column (name = "one_member_of_commission")
     private JobPositions oneMemberOfCommission;
+    @Column (name = "two_member_of_commission")
     private JobPositions twoMemberOfCommission;
+    @Column (name = "three_member_of_commission")
     private JobPositions threeMemberOfCommission;
+    @Column (name = "four_member_of_commission")
     private JobPositions fourMemberOfCommission;
 
-
-    private List<Employee> employees = new ArrayList<>();
+    @ManyToMany(mappedBy = "protocols")
+    private Set<Employee> employees = new HashSet<>();
 
     public Protocol() {
-    }
-
-    @PersistenceConstructor
-    public Protocol(Long id, Date dateOfExamination, JobPositions chairman, JobPositions oneMemberOfCommission, JobPositions twoMemberOfCommission, JobPositions threeMemberOfCommission, JobPositions fourMemberOfCommission) {
-        this.id = id;
-        this.dateOfExamination = dateOfExamination;
-        this.chairman = chairman;
-        this.oneMemberOfCommission = oneMemberOfCommission;
-        this.twoMemberOfCommission = twoMemberOfCommission;
-        this.threeMemberOfCommission = threeMemberOfCommission;
-        this.fourMemberOfCommission = fourMemberOfCommission;
-
     }
 
     public Long getId() {
@@ -94,25 +91,11 @@ public class Protocol {
         this.fourMemberOfCommission = fourMemberOfCommission;
     }
 
-    public List<Employee> getEmployees() {
+    public Set<Employee> getEmployees() {
         return employees;
     }
 
-    public void setEmployees(List<Employee> employees) {
+    public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
-
-    @Override
-    public String toString() {
-        return "\nProtocol{" +
-                "\nid=" + id +
-                ", \ndateOfExamination=" + dateOfExamination +
-                ", \nchairman=" + chairman +
-                ", \noneMemberOfCommission=" + oneMemberOfCommission +
-                ", \ntwoMemberOfCommission=" + twoMemberOfCommission +
-                ", \nthreeMemberOfCommission=" + threeMemberOfCommission +
-                ", \nfourMemberOfCommission=" + fourMemberOfCommission +
-                '}';
-    }
-
 }

@@ -3,8 +3,6 @@ package com.mycompany.mywebapp.service;
 import com.mycompany.mywebapp.dto.RegulationDocumentDto;
 import com.mycompany.mywebapp.entity.RegulationDocument;
 import com.mycompany.mywebapp.exception.RegulationDocumentNotFoundException;
-import com.mycompany.mywebapp.jdbc.dao.RegulationDocumentDao;
-import com.mycompany.mywebapp.repository.EmployeeRepository;
 import com.mycompany.mywebapp.repository.RegulationDocumentRepository;
 import com.mycompany.mywebapp.сonverter.RegulationDocumentConverter;
 import org.springframework.beans.factory.annotation.Autowired;

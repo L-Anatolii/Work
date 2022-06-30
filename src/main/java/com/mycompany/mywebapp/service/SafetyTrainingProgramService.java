@@ -3,7 +3,6 @@ package com.mycompany.mywebapp.service;
 import com.mycompany.mywebapp.dto.SafetyTrainingProgramDto;
 import com.mycompany.mywebapp.entity.SafetyTrainingProgram;
 import com.mycompany.mywebapp.exception.ProgramNotFoundException;
-import com.mycompany.mywebapp.jdbc.dao.SafetyTrainingProgramDao;
 import com.mycompany.mywebapp.repository.SafetyTrainingProgramRepository;
 import com.mycompany.mywebapp.сonverter.SafetyTrainingProgramConverter;
 import org.springframework.beans.factory.annotation.Autowired;
