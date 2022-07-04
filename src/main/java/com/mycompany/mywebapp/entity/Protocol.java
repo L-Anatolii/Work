@@ -1,17 +1,11 @@
 package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
-import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.relational.core.mapping.Table;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.util.*;
 
 @Entity
-@Table("protocol")
+@Table(name = "protocols")
 public class Protocol {
 
     @Id
@@ -29,8 +23,8 @@ public class Protocol {
     @Column (name = "four_member_of_commission")
     private JobPositions fourMemberOfCommission;
 
-    @ManyToMany(mappedBy = "protocols")
-    private Set<Employee> employees = new HashSet<>();
+//    @ManyToMany(mappedBy = "protocols")
+//    private Set<Employee> employees = new HashSet<>();
 
     public Protocol() {
     }
@@ -91,11 +85,5 @@ public class Protocol {
         this.fourMemberOfCommission = fourMemberOfCommission;
     }
 
-    public Set<Employee> getEmployees() {
-        return employees;
-    }
 
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
-    }
 }

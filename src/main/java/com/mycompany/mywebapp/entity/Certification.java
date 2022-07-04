@@ -1,39 +1,43 @@
 package com.mycompany.mywebapp.entity;
 
-import org.springframework.data.relational.core.mapping.Table;
-
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table("certification")
-public class Certification {
-
+@Table(name = "certifications")
+public class Certification implements Serializable {
 
     @EmbeddedId
-    EmployeeProgramKey id;
+    public CertificationKey  id = new CertificationKey();
+//
+//    @ManyToOne()
+//    @MapsId("employeeId")
+//    @JoinColumn(name = "employee_id")
+//    private Employee employee;
+//
+//    @ManyToOne
+//    @MapsId("programId")
+//    @JoinColumn(name = "safety_training_program_id")
+//    private SafetyTrainingProgram program;
+//
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    private Long id;
 
     @ManyToOne
     @MapsId("employeeId")
     @JoinColumn(name = "employee_id")
-    Employee employee;
+    private Employee employee;
 
     @ManyToOne
     @MapsId("programId")
     @JoinColumn(name = "safety_training_program_id")
-    SafetyTrainingProgram program;
+    private SafetyTrainingProgram program;
 
+    @Column(name = "number")
     private Integer number;
 
     public Certification() {
-    }
-
-    public EmployeeProgramKey getId() {
-        return id;
-    }
-
-    public void setId(EmployeeProgramKey id) {
-        this.id = id;
     }
 
     public Employee getEmployee() {
@@ -58,5 +62,15 @@ public class Certification {
 
     public void setNumber(Integer number) {
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return "Certification{" +
+                "id=" + id +
+                ", employee=" + employee +
+                ", program=" + program +
+                ", number=" + number +
+                '}';
     }
 }

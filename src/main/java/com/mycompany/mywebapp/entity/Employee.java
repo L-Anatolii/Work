@@ -6,7 +6,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "employee")
+@Table(name = "employees")
 public class Employee {
 
     @Id
@@ -22,38 +22,33 @@ public class Employee {
     @Column (name = "job_position")
     private JobPositions jobPosition;
 
-    @OneToMany(mappedBy = "employee")
-    Set<Certification> certifications;
+    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Certification> certifications = new HashSet<>();
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "certification",
-            joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "safety_training_program_id"))
-    private Set<SafetyTrainingProgram> programs = new HashSet<>();
+//    public void addProgram(SafetyTrainingProgram program){
+//        this.programs.add(program);
+//        program.getEmployees().add(this);
+//    }
+//    public void removeProgram(SafetyTrainingProgram program){
+//        this.programs.remove(program);
+//        program.getEmployees().remove(this);
+//    }
 
-    public void addProgram(SafetyTrainingProgram program){
-        this.programs.add(program);
-        program.getEmployees().add(this);
-    }
-    public void removeProgram(SafetyTrainingProgram program){
-        this.programs.remove(program);
-        program.getEmployees().remove(this);
-    }
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(name = "employee_protocol",
-            joinColumns = @JoinColumn(name = "employee_id"),
-            inverseJoinColumns = @JoinColumn(name = "protocol_id"))
-    private Set<Protocol> protocols = new HashSet<>();
-
-    public void addProtocol(Protocol protocol){
-        this.protocols.add(protocol);
-        protocol.getEmployees().add(this);
-    }
-    public void removeProtocol(Protocol protocol){
-        this.protocols.remove(protocol);
-        protocol.getEmployees().remove(this);
-    }
+//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    @JoinTable(name = "employee_protocol",
+//            joinColumns = @JoinColumn(name = "employee_id"),
+//            inverseJoinColumns = @JoinColumn(name = "protocol_id"))
+//    private Set<Protocol> protocols = new HashSet<>();
+//
+//    public void addProtocol(Protocol protocol){
+//        this.protocols.add(protocol);
+//        protocol.getEmployees().add(this);
+//    }
+//    public void removeProtocol(Protocol protocol){
+//        this.protocols.remove(protocol);
+//        protocol.getEmployees().remove(this);
+//    }
 
     public Employee() {
 
@@ -107,19 +102,41 @@ public class Employee {
         this.certifications = certifications;
     }
 
-    public Set<SafetyTrainingProgram> getPrograms() {
-        return programs;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Employee employee = (Employee) o;
+
+        if (id != null ? !id.equals(employee.id) : employee.id != null) return false;
+        if (firstName != null ? !firstName.equals(employee.firstName) : employee.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(employee.lastName) : employee.lastName != null) return false;
+        if (patronymic != null ? !patronymic.equals(employee.patronymic) : employee.patronymic != null) return false;
+        if (jobPosition != employee.jobPosition) return false;
+        return certifications != null ? certifications.equals(employee.certifications) : employee.certifications == null;
     }
 
-    public void setPrograms(Set<SafetyTrainingProgram> programs) {
-        this.programs = programs;
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);
+        result = 31 * result + (jobPosition != null ? jobPosition.hashCode() : 0);
+        result = 31 * result + (certifications != null ? certifications.hashCode() : 0);
+        return result;
     }
 
-    public Set<Protocol> getProtocols() {
-        return protocols;
-    }
-
-    public void setProtocols(Set<Protocol> protocols) {
-        this.protocols = protocols;
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "id=" + id +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", jobPosition=" + jobPosition +
+                ", certifications=" + certifications.size() +
+                '}';
     }
 }
