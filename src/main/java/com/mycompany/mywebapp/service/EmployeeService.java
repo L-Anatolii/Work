@@ -5,6 +5,7 @@ import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.exception.EmployeeNotFoundException;
 import com.mycompany.mywebapp.repository.EmployeeRepository;
 import com.mycompany.mywebapp.сonverter.EmployeeConverter;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -5,15 +5,16 @@ import javax.persistence.Embeddable;
 import java.io.Serializable;
 
 @Embeddable
-public class EmployeeProgramKey implements Serializable {
+public class CertificationKey implements Serializable {
 
     @Column(name = "employee_id")
-    Long employeeId;
+    public Long employeeId;
 
     @Column(name = "safety_training_program_id")
-    Long programId;
+    public Long programId;
 
-    public EmployeeProgramKey() {
+    public CertificationKey() {
+
     }
 
     public Long getEmployeeId() {
@@ -37,7 +38,7 @@ public class EmployeeProgramKey implements Serializable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        EmployeeProgramKey that = (EmployeeProgramKey) o;
+        CertificationKey that = (CertificationKey) o;
 
         if (employeeId != null ? !employeeId.equals(that.employeeId) : that.employeeId != null) return false;
         return programId != null ? programId.equals(that.programId) : that.programId == null;
@@ -48,5 +49,13 @@ public class EmployeeProgramKey implements Serializable {
         int result = employeeId != null ? employeeId.hashCode() : 0;
         result = 31 * result + (programId != null ? programId.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "CertificationKey{" +
+                "employeeId=" + employeeId +
+                ", programId=" + programId +
+                '}';
     }
 }

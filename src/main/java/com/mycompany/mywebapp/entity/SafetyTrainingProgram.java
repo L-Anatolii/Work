@@ -1,19 +1,18 @@
 package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
-import org.springframework.data.relational.core.mapping.Table;
-
 import javax.persistence.*;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table("safety_training_program")
+@Table(name = "safety_training_programs")
 public class SafetyTrainingProgram {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique = true)
     private Long id;
     @Column(name = "title_of_program")
     private String titleOfProgram;
@@ -26,11 +25,8 @@ public class SafetyTrainingProgram {
     @Column (name = "date_of_approval")
     private Date dateOfApproval;
 
-    @OneToMany(mappedBy = "program")
-    Set<Certification> certifications;
-
-    @ManyToMany(mappedBy = "programs")
-    private Set<Employee> employees = new HashSet<>();
+    @OneToMany(mappedBy = "program", cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Certification> certifications = new HashSet<>();
 
     public SafetyTrainingProgram() {
     }
@@ -91,25 +87,51 @@ public class SafetyTrainingProgram {
         this.certifications = certifications;
     }
 
-    public Set<Employee> getEmployees() {
-        return employees;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SafetyTrainingProgram program = (SafetyTrainingProgram) o;
+
+        if (id != null ? !id.equals(program.id) : program.id != null) return false;
+        if (titleOfProgram != null ? !titleOfProgram.equals(program.titleOfProgram) : program.titleOfProgram != null)
+            return false;
+        if (programNumber != null ? !programNumber.equals(program.programNumber) : program.programNumber != null)
+            return false;
+        if (duration != null ? !duration.equals(program.duration) : program.duration != null) return false;
+        if (approvedTheProgram != program.approvedTheProgram) return false;
+        if (dateOfApproval != null ? !dateOfApproval.equals(program.dateOfApproval) : program.dateOfApproval != null)
+            return false;
+        return certifications != null ? certifications.equals(program.certifications) : program.certifications == null;
     }
 
-    public void setEmployees(Set<Employee> employees) {
-        this.employees = employees;
+    @Override
+    public int hashCode() {
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (titleOfProgram != null ? titleOfProgram.hashCode() : 0);
+        result = 31 * result + (programNumber != null ? programNumber.hashCode() : 0);
+        result = 31 * result + (duration != null ? duration.hashCode() : 0);
+        result = 31 * result + (approvedTheProgram != null ? approvedTheProgram.hashCode() : 0);
+        result = 31 * result + (dateOfApproval != null ? dateOfApproval.hashCode() : 0);
+        result = 31 * result + (certifications != null ? certifications.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "SafetyTrainingProgram{" +
+                "id=" + id +
+                ", titleOfProgram='" + titleOfProgram + '\'' +
+                ", programNumber=" + programNumber +
+                ", duration=" + duration +
+                ", approvedTheProgram=" + approvedTheProgram +
+                ", dateOfApproval=" + dateOfApproval +
+                ", certifications=" + certifications.size() +
+                '}';
     }
 }
-    //
-//    @Override
-//    public String toString() {
-//        return "\nSafetyTrainingProgram{" +
-//                "\nid=" + id +
-//                ", \ntitleOfProgram='" + titleOfProgram +
-//                ", \nprogramNumber=" + programNumber +
-//                ", \nduration=" + duration +
-//                ", \njobPosition=" + approvedTheProgram +
-//                ", \ndateOfApproval=" + dateOfApproval +
-//                '}';
+
 
 
 
