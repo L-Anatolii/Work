@@ -6,6 +6,30 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@NamedEntityGraph(name = "employee-with-protocols",
+        attributeNodes = {
+            @NamedAttributeNode("id"),
+            @NamedAttributeNode("firstName"),
+            @NamedAttributeNode("lastName"),
+            @NamedAttributeNode("patronymic"),
+            @NamedAttributeNode("jobPosition"),
+            @NamedAttributeNode(value = "protocols", subgraph = "protocols-subgraph" ),
+        },
+        subgraphs = {
+            @NamedSubgraph(
+                    name = "protocols-subgraph",
+                    attributeNodes = {
+                            @NamedAttributeNode("id"),
+                            @NamedAttributeNode("dateOfExamination"),
+                            @NamedAttributeNode("chairman"),
+                            @NamedAttributeNode("oneMemberOfCommission"),
+                            @NamedAttributeNode("twoMemberOfCommission"),
+                            @NamedAttributeNode("threeMemberOfCommission"),
+                            @NamedAttributeNode("fourMemberOfCommission")
+                    }
+            )
+        }
+)
 @Table(name = "employees")
 public class Employee {
 
@@ -22,33 +46,16 @@ public class Employee {
     @Column (name = "job_position")
     private JobPositions jobPosition;
 
-    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "employee",fetch = FetchType.LAZY, orphanRemoval = true)
     private Set<Certification> certifications = new HashSet<>();
 
-//    public void addProgram(SafetyTrainingProgram program){
-//        this.programs.add(program);
-//        program.getEmployees().add(this);
-//    }
-//    public void removeProgram(SafetyTrainingProgram program){
-//        this.programs.remove(program);
-//        program.getEmployees().remove(this);
-//    }
-
-
-//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-//    @JoinTable(name = "employee_protocol",
-//            joinColumns = @JoinColumn(name = "employee_id"),
-//            inverseJoinColumns = @JoinColumn(name = "protocol_id"))
-//    private Set<Protocol> protocols = new HashSet<>();
-//
-//    public void addProtocol(Protocol protocol){
-//        this.protocols.add(protocol);
-//        protocol.getEmployees().add(this);
-//    }
-//    public void removeProtocol(Protocol protocol){
-//        this.protocols.remove(protocol);
-//        protocol.getEmployees().remove(this);
-//    }
+    @ManyToMany(cascade = {CascadeType.PERSIST,
+                           CascadeType.REFRESH,
+                           CascadeType.DETACH}, fetch = FetchType.LAZY)
+    @JoinTable(name = "employee_protocol",
+            joinColumns = @JoinColumn(name = "employee_id"),
+            inverseJoinColumns = @JoinColumn(name = "protocol_id"))
+    private Set<Protocol> protocols = new HashSet<>();
 
     public Employee() {
 
@@ -102,6 +109,15 @@ public class Employee {
         this.certifications = certifications;
     }
 
+    public Set<Protocol> getProtocols() {
+        return protocols;
+    }
+
+    public void setProtocols(Set<Protocol> protocols) {
+        this.protocols = protocols;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -114,7 +130,9 @@ public class Employee {
         if (lastName != null ? !lastName.equals(employee.lastName) : employee.lastName != null) return false;
         if (patronymic != null ? !patronymic.equals(employee.patronymic) : employee.patronymic != null) return false;
         if (jobPosition != employee.jobPosition) return false;
-        return certifications != null ? certifications.equals(employee.certifications) : employee.certifications == null;
+        if (certifications != null ? !certifications.equals(employee.certifications) : employee.certifications != null)
+            return false;
+        return protocols != null ? protocols.equals(employee.protocols) : employee.protocols == null;
     }
 
     @Override
@@ -125,6 +143,7 @@ public class Employee {
         result = 31 * result + (patronymic != null ? patronymic.hashCode() : 0);
         result = 31 * result + (jobPosition != null ? jobPosition.hashCode() : 0);
         result = 31 * result + (certifications != null ? certifications.hashCode() : 0);
+        result = 31 * result + (protocols != null ? protocols.hashCode() : 0);
         return result;
     }
 
@@ -137,6 +156,7 @@ public class Employee {
                 ", patronymic='" + patronymic + '\'' +
                 ", jobPosition=" + jobPosition +
                 ", certifications=" + certifications.size() +
+                ", protocols=" + protocols.size() +
                 '}';
     }
 }

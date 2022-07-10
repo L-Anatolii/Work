@@ -1,6 +1,9 @@
 package com.mycompany.mywebapp.dto;
 
+import com.mycompany.mywebapp.entity.Certification;
 import org.springframework.stereotype.Component;
+
+import java.util.Set;
 
 @Component
 public class EmployeeDto {
@@ -10,6 +13,7 @@ public class EmployeeDto {
     private String lastName;
     private String patronymic;
     private String jobPosition;
+    private Set<Certification> certification;
 
     public EmployeeDto() {
     }
@@ -52,5 +56,13 @@ public class EmployeeDto {
 
     public void setPatronymic(String patronymic) {
         this.patronymic = patronymic;
+    }
+
+    public void setCertification(Set<Certification> certification) {
+        this.certification = certification;
+    }
+
+    public Set<Certification> getCertification() {
+        return certification;
     }
 }

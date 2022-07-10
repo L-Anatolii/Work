@@ -17,6 +17,7 @@ public class EmployeeConverter {
         dto.setFirstName(employee.getFirstName());
         dto.setLastName(employee.getLastName());
         dto.setPatronymic(employee.getPatronymic());
+//        dto.setCertification(employee.getCertifications());
         return dto;
     }
 

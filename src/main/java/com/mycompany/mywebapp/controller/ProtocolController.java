@@ -1,6 +1,8 @@
 package com.mycompany.mywebapp.controller;
 
+import com.mycompany.mywebapp.dto.EmployeeDto;
 import com.mycompany.mywebapp.dto.ProtocolDto;
+import com.mycompany.mywebapp.service.EmployeeService;
 import com.mycompany.mywebapp.service.ProtocolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,9 @@ public class ProtocolController {
     @Autowired
     private ProtocolService protocolService;
 
+    @Autowired
+    private EmployeeService employeeService;
+
     @GetMapping(value = "/protocols")
     public String showProtocolList(Model model) {
         List<ProtocolDto> listProtocols = protocolService.getAllProtocols();
@@ -27,6 +32,8 @@ public class ProtocolController {
 
     @GetMapping(value = "/protocols/new")
     public String showNewForm(Model model){
+        List<EmployeeDto> listEmployees = employeeService.getAllEmployees();
+        model.addAttribute("listEmployees",listEmployees);
         model.addAttribute("protocol", new ProtocolDto());
         model.addAttribute("pageTitle", "Add new Protocol");
         return "protocol_create";

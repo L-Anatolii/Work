@@ -2,16 +2,19 @@ package com.mycompany.mywebapp;
 
 import com.mycompany.mywebapp.entity.Certification;
 import com.mycompany.mywebapp.entity.Employee;
-import com.mycompany.mywebapp.entity.SafetyTrainingProgram;
+import com.mycompany.mywebapp.entity.Protocol;
+import com.mycompany.mywebapp.exception.EmployeeNotFoundException;
 import com.mycompany.mywebapp.repository.CertificationRepository;
 import com.mycompany.mywebapp.repository.EmployeeRepository;
+import com.mycompany.mywebapp.repository.ProtocolRepository;
 import com.mycompany.mywebapp.repository.SafetyTrainingProgramRepository;
-import com.mycompany.mywebapp.service.Positions.JobPositions;
+import com.mycompany.mywebapp.service.EmployeeService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @SpringBootTest
 public class Hibernate {
@@ -22,52 +25,46 @@ public class Hibernate {
     SafetyTrainingProgramRepository programRepository;
     @Autowired
     CertificationRepository certificationRepository;
+    @Autowired
+    EmployeeService employeeService;
+
+    @Autowired
+    ProtocolRepository protocolRepository;
 
     @Test
-    public void addEmployeeWithPrograms(){
-        SafetyTrainingProgram program = new SafetyTrainingProgram();
-        program.setTitleOfProgram("Машинист");
-        program.setProgramNumber(17);
-        program.setDuration(56);
-        program.setApprovedTheProgram(JobPositions.INJENER_PO_REMONTU);
-        program.setDateOfApproval(new Date());
-        programRepository.save(program);
-        SafetyTrainingProgram program2 = new SafetyTrainingProgram();
-        program2.setTitleOfProgram("Машинист");
-        program2.setProgramNumber(17);
-        program2.setDuration(56);
-        program2.setApprovedTheProgram(JobPositions.INJENER_PO_REMONTU);
-        program2.setDateOfApproval(new Date());
-        programRepository.save(program2);
-        SafetyTrainingProgram program3 = new SafetyTrainingProgram();
-        program3.setTitleOfProgram("Машинист");
-        program3.setProgramNumber(17);
-        program3.setDuration(56);
-        program3.setApprovedTheProgram(JobPositions.INJENER_PO_REMONTU);
-        program3.setDateOfApproval(new Date());
-        programRepository.save(program3);
-
-        Employee employee = new Employee();
-        employee.setFirstName("Анатолий");
-        employee.setLastName("Анатолий");
-        employee.setPatronymic("Анатольевич");
-        employee.setJobPosition(JobPositions.INJENER_PO_EOGO);
-        employeeRepository.save(employee);
-
-        Certification certification = new Certification();
-        certification.setEmployee(employee);
-        certification.setProgram(program3);
-        certification.setNumber(55);
-        certificationRepository.save(certification);
+    public void getEmployeeWithCertifications() throws EmployeeNotFoundException {
+        Employee employee = employeeService.findByIdWithCertifications(1L);
+        Set<Certification> certifications = employee.getCertifications();
+        System.out.println(certifications);
+        for(Certification certification :certifications){
+            System.out.println(certification.getNumber());
+        }
     }
 
     @Test
-    public void getAllCertification(){
-        Employee employee = new Employee();
-        employee = employeeRepository.findAllById(1L);
-        Set<Certification> certifications = employee.getCertifications();
-        for(Certification certification :certifications){
-            System.out.println(certification.getNumber());
+    public void getProtocolWithEmployees() throws EmployeeNotFoundException {
+        Employee employee = employeeService.findByIdWithCertifications(1L);
+        Protocol protocol = protocolRepository.findAllById(1l);
+        Set<Protocol> protocols = new HashSet<>();
+        protocols.add(protocol);
+        employee.setProtocols(protocols);
+        employeeService.saves(employee);
+    }
+    @Test
+    public void findAllEmployee() throws EmployeeNotFoundException {
+        Employee employee = employeeRepository.findAllById(1L);
+        Set<Protocol> protocols = employee.getProtocols();
+        for (Protocol protocol : protocols){
+            System.out.println(protocol.getFourMemberOfCommission());
+        }
+    }
+
+    @Test
+    public void findAllProtocol() throws EmployeeNotFoundException {
+        Protocol protocol = protocolRepository.findAllById(1L);
+        Set<Employee> employees = protocol.getEmployees();
+        for (Employee employee : employees){
+            System.out.println(employee.getFirstName());
         }
     }
 }

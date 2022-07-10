@@ -1,7 +1,7 @@
 package com.mycompany.mywebapp.repository;
 
-import com.mycompany.mywebapp.entity.Certification;
 import com.mycompany.mywebapp.entity.Employee;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,5 +10,6 @@ public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     Long countById(Long id);
 
-    Employee findAllById(Long i);
+    @EntityGraph(value = "employee-with-protocols", type = EntityGraph.EntityGraphType.LOAD)
+    Employee findAllById(Long id);
 }

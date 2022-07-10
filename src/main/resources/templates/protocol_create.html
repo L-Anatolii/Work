@@ -47,17 +47,19 @@
                     <input type="text" th:field="*{fourMemberOfCommission}" class="form-control" required minlength="5" maxlength="45"/>
                 </div>
             </div>
+            <select class="form-control" id="dropDownList">
+                <option th:each="employee : ${listEmployees}" th:value="${employee.getEmployeeId}" th:text="${employee.patronymic+' '+employee.firstName +' '+employee.lastName}"></option>
+            </select>
             <div class="text-center">
                 <button type="submit" class="btn btn-primary m-2">Save</button>
                 <button type="button" class="btn btn-secondary m-2" onclick="cacelForma()">Cancel</button>
-
             </div>
         </div>
     </form>
 </div>
 <script type="text/javascript">
     function cacelForma(){
-        window.location = "[[@{/programs}]]";
+        window.location = "[[@{/protocols}]]";
     }
 </script>
 </body>

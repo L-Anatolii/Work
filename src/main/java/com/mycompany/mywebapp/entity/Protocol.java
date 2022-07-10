@@ -5,12 +5,38 @@ import javax.persistence.*;
 import java.util.*;
 
 @Entity
+@NamedEntityGraph(name = "protocol-with-employees",
+        attributeNodes = {
+                @NamedAttributeNode("id"),
+                @NamedAttributeNode("dateOfExamination"),
+                @NamedAttributeNode("chairman"),
+                @NamedAttributeNode("oneMemberOfCommission"),
+                @NamedAttributeNode("twoMemberOfCommission"),
+                @NamedAttributeNode("threeMemberOfCommission"),
+                @NamedAttributeNode("fourMemberOfCommission"),
+                @NamedAttributeNode(value = "employees", subgraph = "employees-subgraph" ),
+        },
+        subgraphs = {
+                @NamedSubgraph(
+                        name = "employees-subgraph",
+                        attributeNodes = {
+                                @NamedAttributeNode("id"),
+                                @NamedAttributeNode("firstName"),
+                                @NamedAttributeNode("lastName"),
+                                @NamedAttributeNode("patronymic"),
+                                @NamedAttributeNode("jobPosition")
+                        }
+                )
+        }
+)
 @Table(name = "protocols")
 public class Protocol {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(name = "date_of_examination")
+    @Temporal(TemporalType.DATE)
     private Date dateOfExamination;
     @Column (name = "chairman")
     private JobPositions chairman;
@@ -23,8 +49,8 @@ public class Protocol {
     @Column (name = "four_member_of_commission")
     private JobPositions fourMemberOfCommission;
 
-//    @ManyToMany(mappedBy = "protocols")
-//    private Set<Employee> employees = new HashSet<>();
+    @ManyToMany(mappedBy = "protocols", fetch = FetchType.LAZY)
+    private Set<Employee> employees = new HashSet<>();
 
     public Protocol() {
     }
@@ -83,6 +109,14 @@ public class Protocol {
 
     public void setFourMemberOfCommission(JobPositions fourMemberOfCommission) {
         this.fourMemberOfCommission = fourMemberOfCommission;
+    }
+
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
     }
 
 
