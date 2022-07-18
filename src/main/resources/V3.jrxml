@@ -3,10 +3,14 @@
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Blank_A4" pageWidth="595" pageHeight="842" columnWidth="539" leftMargin="28" rightMargin="28" topMargin="28" bottomMargin="28" uuid="34cba994-a348-482d-a4f9-cc564ea3b15d">
 	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
 	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
-	<field name="id" class="java.lang.Integer"/>
-	<field name="email" class="java.lang.String"/>
-	<field name="enabled" class="java.lang.Boolean"/>
-	<field name="password" class="java.lang.String"/>
+	<parameter name="CollectionBeanParam" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<queryString>
+		<![CDATA[SELECT * FROM employees]]>
+	</queryString>
+	<field name="firstName" class="java.lang.String"/>
+	<field name="lastName" class="java.lang.String"/>
+	<field name="patronymic" class="java.lang.String"/>
+
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -14,34 +18,6 @@
 		<band height="786" splitType="Stretch">
 			<property name="com.jaspersoft.studio.unit.height" value="px"/>
 			<property name="com.jaspersoft.studio.layout"/>
-			<textField>
-				<reportElement x="0" y="521" width="100" height="15" uuid="df36eede-f9ab-4f09-b0fd-48b5f1ed111d"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{id}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="0" y="510" width="100" height="15" uuid="30900144-0445-4c10-9a38-522daf829774"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{email}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="200" y="514" width="100" height="15" uuid="30900144-0445-4c10-9a38-522daf829774"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{enabled}]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="100" y="515" width="100" height="15" uuid="30900144-0445-4c10-9a38-522daf829774"/>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font isBold="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$F{password}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="0" y="0" width="540" height="18" uuid="161e87cd-eecd-43ee-a3f0-3d00ee988f6d">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1033,6 +1009,30 @@
 					<font size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
 				<text><![CDATA[                          /]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="503" width="100" height="30" uuid="7ae5fe69-1d51-4f70-817b-3c89e420f692"/>
+				<textFieldExpression><![CDATA[$F{firstName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="503" width="100" height="30" uuid="61dcc623-acc9-413c-a33e-8d8de77cdea4"/>
+				<text><![CDATA[firstName]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="100" y="533" width="100" height="30" uuid="de4024e9-b161-4a0a-b561-14b9553d79c2"/>
+				<textFieldExpression><![CDATA[$F{lastName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="533" width="100" height="30" uuid="61e2ed6e-1391-42a5-902b-ec303ca461f0"/>
+				<text><![CDATA[lastName]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="101" y="563" width="100" height="30" uuid="4a0b0d32-e46f-44bd-a9ed-a6ba87c693fd"/>
+				<textFieldExpression><![CDATA[$F{patronymic}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="563" width="100" height="30" uuid="b0f525e7-3262-415a-9891-7bc700e405ec"/>
+				<text><![CDATA[patronymic]]></text>
 			</staticText>
 		</band>
 	</detail>

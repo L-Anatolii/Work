@@ -2,6 +2,7 @@ package com.mycompany.mywebapp.controller;
 
 import com.mycompany.mywebapp.dto.EmployeeDto;
 import com.mycompany.mywebapp.dto.ProtocolDto;
+import com.mycompany.mywebapp.jasperreport.ReportService;
 import com.mycompany.mywebapp.service.EmployeeService;
 import com.mycompany.mywebapp.service.ProtocolService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class ProtocolController {
 
     @Autowired
     private EmployeeService employeeService;
+
+    @Autowired
+    ReportService reportService;
 
     @GetMapping(value = "/protocols")
     public String showProtocolList(Model model) {
@@ -62,4 +66,9 @@ public class ProtocolController {
 
     }
 
+    @GetMapping("/pdf")
+    public String generatePdf(){
+        reportService.generateReport();
+        return "redirect:/pdf1";
+    }
 }
