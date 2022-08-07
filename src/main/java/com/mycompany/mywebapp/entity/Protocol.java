@@ -50,6 +50,7 @@ public class Protocol {
     private JobPositions fourMemberOfCommission;
 
     @ManyToMany(mappedBy = "protocols", fetch = FetchType.LAZY)
+    @OrderBy("id")
     private Set<Employee> employees = new HashSet<>();
 
     public Protocol() {

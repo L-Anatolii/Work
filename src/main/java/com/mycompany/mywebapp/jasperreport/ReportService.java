@@ -1,6 +1,7 @@
 package com.mycompany.mywebapp.jasperreport;
 
 import com.mycompany.mywebapp.entity.Employee;
+import com.mycompany.mywebapp.entity.Protocol;
 import com.mycompany.mywebapp.repository.EmployeeRepository;
 import com.mycompany.mywebapp.repository.ProtocolRepository;
 import net.sf.jasperreports.engine.*;
@@ -39,6 +40,9 @@ public class ReportService {
 //                employee4.setPatronymic(employee6.getPatronymic());
 //                list.add(employee4);
 //            }
+            Protocol protocol = (Protocol) protocolRepository.findAllById(1L);
+            Set<Employee> employees = (Set<Employee>) protocol.getEmployees();
+
             List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
             for (Employee employee : employeeRepository.findAll()) {
                 Map<String, Object> item = new HashMap<String, Object>();
@@ -50,7 +54,7 @@ public class ReportService {
             }
 
 
-            JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(result);
+            JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(employees);
 
 
             // Compile the Jasper report from .jrxml to .japser
