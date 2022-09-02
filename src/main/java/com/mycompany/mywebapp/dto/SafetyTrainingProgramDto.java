@@ -1,12 +1,10 @@
 package com.mycompany.mywebapp.dto;
 
-import com.mycompany.mywebapp.entity.Employee;
-import com.mycompany.mywebapp.service.Positions.JobPositions;
-import org.springframework.format.annotation.DateTimeFormat;
+import com.mycompany.mywebapp.entity.Certification;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 @Component
@@ -18,39 +16,30 @@ public class SafetyTrainingProgramDto {
     private Integer duration;
     private String approvedTheProgram;
     private String dateOfApproval;
-//    private Set<Employee> employees;
 
     public SafetyTrainingProgramDto() {
     }
-
     public Long getProgramId() {
         return programId;
     }
-
     public void setProgramId(Long programId) {
         this.programId = programId;
     }
-
     public String getTitleOfProgram() {
         return titleOfProgram;
     }
-
     public void setTitleOfProgram(String titleOfProgram) {
         this.titleOfProgram = titleOfProgram;
     }
-
     public Integer getProgramNumber() {
         return programNumber;
     }
-
     public void setProgramNumber(Integer programNumber) {
         this.programNumber = programNumber;
     }
-
     public Integer getDuration() {
         return duration;
     }
-
     public void setDuration(Integer duration) {
         this.duration = duration;
     }
@@ -58,7 +47,6 @@ public class SafetyTrainingProgramDto {
     public String getApprovedTheProgram() {
         return approvedTheProgram;
     }
-
     public void setApprovedTheProgram(String approvedTheProgram) {
         this.approvedTheProgram = approvedTheProgram;
     }
@@ -71,5 +59,15 @@ public class SafetyTrainingProgramDto {
         this.dateOfApproval = dateOfApproval;
     }
 
-
+    @Override
+    public String toString() {
+        return "SafetyTrainingProgramDto{" +
+                "programId=" + programId +
+                ", titleOfProgram='" + titleOfProgram + '\'' +
+                ", programNumber=" + programNumber +
+                ", duration=" + duration +
+                ", approvedTheProgram='" + approvedTheProgram + '\'' +
+                ", dateOfApproval='" + dateOfApproval + '\'' +
+                '}';
+    }
 }

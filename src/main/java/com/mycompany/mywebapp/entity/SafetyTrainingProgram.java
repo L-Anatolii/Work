@@ -23,6 +23,7 @@ public class SafetyTrainingProgram {
     @Column (name = "approved_the_program")
     private JobPositions approvedTheProgram;
     @Column (name = "date_of_approval")
+    @Temporal(TemporalType.DATE)
     private Date dateOfApproval;
 
     @OneToMany(mappedBy = "program", cascade = CascadeType.ALL,fetch = FetchType.EAGER)

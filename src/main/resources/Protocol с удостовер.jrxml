@@ -12,7 +12,7 @@
 			<rightPen lineWidth="0.5" lineColor="#000000"/>
 		</box>
 	</style>
-	<style name="Table_CH" mode="Opaque" backcolor="#BFE1FF">
+	<style name="Table_CH" mode="Opaque" backcolor="#FFFFFF">
 		<box>
 			<pen lineWidth="0.5" lineColor="#000000"/>
 			<topPen lineWidth="0.5" lineColor="#000000"/>
@@ -38,6 +38,8 @@
 		<field name="lastName" class="java.lang.String"/>
 		<field name="patronymic" class="java.lang.String"/>
 		<field name="certifications" class="java.util.Collection"/>
+
+		<sortField name = "lastName" order = "Ascending"/>
 	</subDataset>
 	<subDataset name="Order Lines Dataset" uuid="16699787-d524-4c33-9af9-8d61562f0667">
 		<queryString language="SQL">
@@ -58,6 +60,8 @@
 	<field name="firstName" class="java.lang.String"/>
 	<field name="lastName" class="java.lang.String"/>
 	<field name="patronymic" class="java.lang.String"/>
+
+
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -497,6 +501,12 @@
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column1"/>
 						<jr:columnHeader style="Table_CH" height="65" rowSpan="1">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<box>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
 							<staticText>
 								<reportElement x="0" y="0" width="27" height="65" uuid="aa05c58b-d940-4d23-9055-0758bd71909a"/>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
@@ -506,14 +516,20 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="35">
+							<box>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
 							<textField>
-								<reportElement x="0" y="0" width="27" height="35" uuid="2387c921-02d0-4013-8aee-026c11912854"/>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="27" height="35" uuid="2387c921-02d0-4013-8aee-026c11912854"/>
 								<box>
 									<pen lineWidth="1.0" lineStyle="Solid"/>
-									<topPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<leftPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<bottomPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
-									<rightPen lineWidth="0.0" lineStyle="Solid" lineColor="#000000"/>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 								</box>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
@@ -527,6 +543,12 @@
 						<jr:columnHeader style="Table_CH" height="65" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="83" height="65" uuid="959f37b7-562f-493d-850a-9c957a61fe2c"/>
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 								</textElement>
@@ -534,8 +556,20 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="35">
+							<box>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
 							<textField>
-								<reportElement x="0" y="0" width="83" height="35" uuid="14dcf382-3833-4e47-9c84-454c3d9d3204"/>
+								<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="83" height="35" uuid="14dcf382-3833-4e47-9c84-454c3d9d3204"/>
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="10" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 								</textElement>
@@ -548,6 +582,12 @@
 						<jr:columnHeader style="Table_CH" height="65" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="100" height="65" uuid="1182e98c-f57f-4fca-a8a0-3263a9468d84"/>
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 								</textElement>
@@ -556,6 +596,12 @@
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="35">
 							<property name="com.jaspersoft.studio.unit.height" value="px"/>
+							<box>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="88" uuid="47398f28-6d36-4803-aed4-6bfeed08d488">
@@ -563,6 +609,12 @@
 						<jr:columnHeader style="Table_CH" height="65" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="88" height="65" uuid="c8660617-58dd-480b-aa29-379d4a27a81b"/>
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 								</textElement>
@@ -570,10 +622,23 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="35">
+							<box>
+								<pen lineWidth="0.0"/>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
 							<staticText>
-								<reportElement x="0" y="0" width="88" height="35" uuid="9b049e33-bdb1-4325-817f-6d64d2263b15"/>
+								<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="88" height="35" uuid="9b049e33-bdb1-4325-817f-6d64d2263b15"/>
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
-									<font fontName="Arial" size="8" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+									<font fontName="Arial" size="10" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[ГКС, КЦ-5]]></text>
 							</staticText>
@@ -584,6 +649,12 @@
 						<jr:columnHeader style="Table_CH" height="65" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="80" height="65" uuid="b8119686-cbd3-48f7-956b-33639a75b4c7"/>
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 								</textElement>
@@ -595,35 +666,36 @@
 							</staticText>
 						</jr:columnHeader>
 						<jr:detailCell style="Table_TD" height="35">
-
+							<box>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
 							<componentElement>
-								<reportElement x="0" y="0" width="80" height="35" uuid="00fadf6b-2aa8-45a2-a109-2cbfffeaddb4"/>
-								<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+								<reportElement style="Table_CH" stretchType="ContainerHeight" x="0" y="0" width="80" height="35" uuid="00fadf6b-2aa8-45a2-a109-2cbfffeaddb4"/>
+								<jr:list printOrder="Vertical">
 									<datasetRun subDataset="Order Lines Dataset" uuid="1f79b201-f5cd-467b-baca-09a7f442e418">
 										<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{certifications})]]></dataSourceExpression>
 									</datasetRun>
 									<jr:listContents height="35" width="80">
 										<textField>
-											<reportElement mode="Opaque" x="20" y="0" width="20" height="20" backcolor="#BFE1FF" uuid="54cd21f9-b089-43b6-997f-b0ecf1a5da70"/>
-											<box rightPadding="2"/>
+											<reportElement mode="Opaque" x="0" y="0" width="80" height="35" backcolor="#FFFFFF" uuid="54cd21f9-b089-43b6-997f-b0ecf1a5da70"/>
+											<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
+												<pen lineWidth="0.0" lineStyle="Solid"/>
+												<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+												<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+												<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+												<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+											</box>
 											<textElement textAlignment="Center" verticalAlignment="Middle">
-												<font fontName="Arial" size="15" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+												<font fontName="Arial" size="10" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 											</textElement>
-											<textFieldExpression><![CDATA['\n'+"№"+$F{number}]]></textFieldExpression>
+											<textFieldExpression><![CDATA["сдано"+'\n'+"№ "+$F{number}]]></textFieldExpression>
 										</textField>
 									</jr:listContents>
 								</jr:list>
 							</componentElement>
-
-<!--							<componentElement>-->
-<!--								<reportElement x="0" y="0" width="80" height="35" uuid="00fadf6b-2aa8-45a2-a109-2cbfffeaddb4"/>-->
-<!--								<jr:list>-->
-<!--									<datasetRun subDataset="Dataset1" uuid="750b08be-8a26-4cce-8676-b340fcabb156">-->
-<!--										<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource()]]></dataSourceExpression>-->
-<!--									</datasetRun>-->
-<!--									<jr:listContents height="35" width="80"/>-->
-<!--								</jr:list>-->
-<!--							</componentElement>-->
 						</jr:detailCell>
 					</jr:column>
 					<jr:column width="88" uuid="9a514cc3-20ab-4b57-a890-9b1a8dab04e4">
@@ -631,6 +703,12 @@
 						<jr:columnHeader style="Table_CH" height="65" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="88" height="65" uuid="1d3f829f-dc5b-4e33-9f78-7475770d822a"/>
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 								</textElement>
@@ -642,20 +720,40 @@
 т.д.)]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="35"/>
+						<jr:detailCell style="Table_TD" height="35">
+							<box>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</jr:detailCell>
 					</jr:column>
 					<jr:column width="73" uuid="718d7019-1cbb-43a7-bf11-4098fff9357f">
 						<property name="com.jaspersoft.studio.components.table.model.column.name" value="Column7"/>
 						<jr:columnHeader style="Table_CH" height="65" rowSpan="1">
 							<staticText>
 								<reportElement x="0" y="0" width="73" height="65" uuid="508ed0cf-6628-4173-a034-091592dd1a17"/>
+								<box>
+									<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+									<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								</box>
 								<textElement textAlignment="Center" verticalAlignment="Middle">
 									<font fontName="Arial" size="8" pdfFontName="C:/Users/Tolik/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 								</textElement>
 								<text><![CDATA[Подпись проверяемого]]></text>
 							</staticText>
 						</jr:columnHeader>
-						<jr:detailCell style="Table_TD" height="35"/>
+						<jr:detailCell style="Table_TD" height="35">
+							<box>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+						</jr:detailCell>
 					</jr:column>
 				</jr:table>
 			</componentElement>

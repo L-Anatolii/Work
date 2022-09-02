@@ -1,8 +1,6 @@
 package com.mycompany.mywebapp.сonverter;
 
-import com.mycompany.mywebapp.dto.EmployeeDto;
 import com.mycompany.mywebapp.dto.ProtocolDto;
-import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.entity.Protocol;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -16,6 +14,7 @@ public class ProtocolConverter {
 
     @Autowired
     TypeConverter converter;
+
     public ProtocolDto entityToDto(Protocol protocol){
         ProtocolDto dto = new ProtocolDto();
         dto.setProtocolId(protocol.getId());

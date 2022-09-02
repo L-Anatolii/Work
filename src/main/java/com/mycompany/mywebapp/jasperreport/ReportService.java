@@ -1,5 +1,6 @@
 package com.mycompany.mywebapp.jasperreport;
 
+import com.mycompany.mywebapp.entity.Certification;
 import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.entity.Protocol;
 import com.mycompany.mywebapp.repository.EmployeeRepository;
@@ -25,50 +26,40 @@ public class ReportService {
 
 
         try {
-            String reportPath = "C:\\Users\\Anato\\Desktop\\MyWebApp\\src\\main\\resources";
+            String reportPath = "C:\\Users\\Tolik\\Desktop\\MyWebApp\\src\\main\\resources";
 
-            // Get your data source
-//            List<Employee> list = (List<Employee>) employeeRepository.findAll();
-//            Optional<Employee> employee = employeeRepository.findById(1l);
-//            Employee employee1 = employee.get();
-//            list.add(employee1);
-//            for(Employee employee6 : employeeRepository.findAll() ){
-//                Employee employee4 = new Employee();
-//                employee4.setId(employee6.getId());
-//                employee4.setFirstName(employee6.getFirstName());
-//                employee4.setLastName(employee6.getLastName());
-//                employee4.setPatronymic(employee6.getPatronymic());
-//                list.add(employee4);
-//            }
             Protocol protocol = (Protocol) protocolRepository.findAllById(1L);
-            Set<Employee> employees = (Set<Employee>) protocol.getEmployees();
 
-            List<Map<String, Object>> result = new ArrayList<Map<String, Object>>();
-            for (Employee employee : employeeRepository.findAll()) {
-                Map<String, Object> item = new HashMap<String, Object>();
-                item.put("id", employee.getId());
-                item.put("firstName", employee.getFirstName());
-                item.put("lastName", employee.getLastName());
-                item.put("patronymic", employee.getPatronymic());
-                result.add(item);
+            Set<Employee> employees = (Set<Employee>) protocol.getEmployees();
+            Set<Employee> listEmployees = new HashSet<>();
+            listEmployees.add(new Employee());
+            for(Employee employee :employees){
+                listEmployees.add(employee);
             }
 
+            JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(listEmployees);
 
-            JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(employees);
 
+            Map<String, Object> parametrs = new HashMap();
+            parametrs.put("Chairman",protocol.getChairman().getName());
+            parametrs.put("OneMemberOfCommission",protocol.getOneMemberOfCommission().getName());
+            parametrs.put("TwoMemberOfCommission",protocol.getTwoMemberOfCommission().getName());
+            parametrs.put("ThreeMemberOfCommission",protocol.getThreeMemberOfCommission().getName());
+            parametrs.put("FourMemberOfCommission",protocol.getFourMemberOfCommission().getName());
+            parametrs.put("DateOfExamination",protocol.getDateOfExamination());
+            parametrs.put("CollectionBeanEmployee",jrBeanCollectionDataSource);
 
             // Compile the Jasper report from .jrxml to .japser
             JasperReport jasperReport = JasperCompileManager
-//                    .compileReport(reportPath + "\\Simple_Blue.jrxml");
-                    .compileReport(reportPath + "\\Protocol.jrxml");
+//                    .compileReport(reportPath + "\\Protocol.jrxml");
+                    .compileReport(reportPath + "\\Protocol с удостовер.jrxml");
 
             // Fill the report
-            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, null,
-                    jrBeanCollectionDataSource);
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametrs,jrBeanCollectionDataSource);
+
 
             // Export the report to a PDF file
             JasperExportManager.exportReportToPdfFile(jasperPrint, reportPath + "\\Протокол ОТ.pdf");
-//            JRSaver.saveObject();
             System.out.println("Done");
 
             return "Report successfully generated @path= " + reportPath;

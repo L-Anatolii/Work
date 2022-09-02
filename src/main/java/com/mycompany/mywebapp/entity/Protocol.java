@@ -49,7 +49,9 @@ public class Protocol {
     @Column (name = "four_member_of_commission")
     private JobPositions fourMemberOfCommission;
 
-    @ManyToMany(mappedBy = "protocols", fetch = FetchType.LAZY)
+
+    //заменить на fetch = FetchType.LAZY//
+    @ManyToMany(mappedBy = "protocols", fetch = FetchType.EAGER)
     @OrderBy("id")
     private Set<Employee> employees = new HashSet<>();
 

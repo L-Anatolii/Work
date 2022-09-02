@@ -12,4 +12,5 @@ public interface EmployeeRepository extends CrudRepository<Employee, Long> {
 
     @EntityGraph(value = "employee-with-protocols", type = EntityGraph.EntityGraphType.LOAD)
     Employee findAllById(Long id);
+
 }

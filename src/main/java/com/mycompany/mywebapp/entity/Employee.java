@@ -46,7 +46,7 @@ public class Employee {
     @Column (name = "job_position")
     private JobPositions jobPosition;
 
-    @OneToMany(mappedBy = "employee",fetch = FetchType.LAZY, orphanRemoval = true)
+    @OneToMany(mappedBy = "employee",fetch = FetchType.EAGER, orphanRemoval = true)
     private Set<Certification> certifications = new HashSet<>();
 
     @ManyToMany(cascade = {CascadeType.PERSIST,

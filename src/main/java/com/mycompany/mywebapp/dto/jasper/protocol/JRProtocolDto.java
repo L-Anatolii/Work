@@ -1,9 +1,14 @@
-package com.mycompany.mywebapp.dto;
+package com.mycompany.mywebapp.dto.jasper.protocol;
 
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 @Component
-public class ProtocolDto {
+public class JRProtocolDto {
 
     private Long protocolId;
     private String dateOfExamination;
@@ -12,8 +17,9 @@ public class ProtocolDto {
     private String twoMemberOfCommission;
     private String threeMemberOfCommission;
     private String fourMemberOfCommission;
+    private List<SubJREmployeeDto> subReport = new ArrayList<>();
 
-    public ProtocolDto() {
+    public JRProtocolDto() {
     }
     public Long getProtocolId() {
         return protocolId;
@@ -69,5 +75,13 @@ public class ProtocolDto {
 
     public void setFourMemberOfCommission(String fourMemberOfCommission) {
         this.fourMemberOfCommission = fourMemberOfCommission;
+    }
+
+    public List<SubJREmployeeDto> getSubReport() {
+        return subReport;
+    }
+
+    public void setSubReport(List<SubJREmployeeDto> subReport) {
+        this.subReport = subReport;
     }
 }

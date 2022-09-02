@@ -1,23 +1,25 @@
-package com.mycompany.mywebapp.dto;
+package com.mycompany.mywebapp.dto.jasper.protocol;
 
-import com.mycompany.mywebapp.entity.Certification;
+import com.mycompany.mywebapp.dto.jasper.protocol.SubJRCertificationDto;
 import org.springframework.stereotype.Component;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Component
-public class EmployeeDto {
+public class SubJREmployeeDto {
 
     private Long employeeId;
     private String firstName;
     private String lastName;
     private String patronymic;
     private String jobPosition;
-    private Set<Certification> certification;
 
-    public EmployeeDto() {
+    private List<SubJRCertificationDto> jasperCertification = new ArrayList<>();
+
+    public SubJREmployeeDto() {
     }
 
     public String getJobPosition() {
@@ -60,11 +62,23 @@ public class EmployeeDto {
         this.patronymic = patronymic;
     }
 
-    public void setCertification(Set<Certification> certification) {
-        this.certification = certification;
+    public List<SubJRCertificationDto> getJasperCertification() {
+        return jasperCertification;
     }
 
-    public Set<Certification> getCertification() {
-        return certification;
+    public void setJasperCertification(List<SubJRCertificationDto> jasperCertification) {
+        this.jasperCertification = jasperCertification;
+    }
+
+    @Override
+    public String toString() {
+        return "SubJREmployeeDto{" +
+                "employeeId=" + employeeId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", jobPosition='" + jobPosition + '\'' +
+                ", jasperCertification=" + jasperCertification.size() +
+                '}';
     }
 }

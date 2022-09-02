@@ -2,6 +2,7 @@ package com.mycompany.mywebapp.controller;
 
 import com.mycompany.mywebapp.dto.EmployeeDto;
 import com.mycompany.mywebapp.dto.ProtocolDto;
+import com.mycompany.mywebapp.jasperreport.ReportProtocol;
 import com.mycompany.mywebapp.jasperreport.ReportService;
 import com.mycompany.mywebapp.service.EmployeeService;
 import com.mycompany.mywebapp.service.ProtocolService;
@@ -24,6 +25,8 @@ public class ProtocolController {
     @Autowired
     private EmployeeService employeeService;
 
+    @Autowired
+    private ReportProtocol reportProtocol;
     @Autowired
     ReportService reportService;
 
@@ -68,7 +71,7 @@ public class ProtocolController {
 
     @GetMapping("/pdf")
     public String generatePdf(){
-        reportService.generateReport();
+        reportProtocol.generateReport();
         return "redirect:/pdf1";
     }
 }
