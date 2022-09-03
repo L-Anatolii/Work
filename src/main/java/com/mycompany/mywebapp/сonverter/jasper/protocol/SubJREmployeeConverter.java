@@ -25,7 +25,7 @@ public class SubJREmployeeConverter {
         dto.setFirstName(employee.getFirstName());
         dto.setLastName(employee.getLastName());
         dto.setPatronymic(employee.getPatronymic());
-        dto.setJasperCertification(jrConverter.entityToDto(employee.getCertifications()));
+//        dto.setJasperCertification(jrConverter.entityToDto(employee.getCertifications()));
         return dto;
     }
     public List<SubJREmployeeDto> entityToDto (Set<Employee> employees){

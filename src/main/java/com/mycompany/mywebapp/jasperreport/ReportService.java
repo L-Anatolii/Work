@@ -26,7 +26,7 @@ public class ReportService {
 
 
         try {
-            String reportPath = "C:\\Users\\Tolik\\Desktop\\MyWebApp\\src\\main\\resources";
+            String reportPath = "C:\\Users\\Anato\\Desktop\\MyWebApp\\src\\main\\resources";
 
             Protocol protocol = (Protocol) protocolRepository.findAllById(1L);
 
@@ -52,7 +52,7 @@ public class ReportService {
             // Compile the Jasper report from .jrxml to .japser
             JasperReport jasperReport = JasperCompileManager
 //                    .compileReport(reportPath + "\\Protocol.jrxml");
-                    .compileReport(reportPath + "\\Protocol с удостовер.jrxml");
+                    .compileReport(reportPath + "\\Protocol.jrxml");
 
             // Fill the report
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametrs,jrBeanCollectionDataSource);

@@ -84,4 +84,18 @@ public class JRProtocolDto {
     public void setSubReport(List<SubJREmployeeDto> subReport) {
         this.subReport = subReport;
     }
+
+    @Override
+    public String toString() {
+        return "JRProtocolDto{" +
+                '\n'+"protocolId=" + protocolId +
+                '\n'+" dateOfExamination='" + dateOfExamination + '\'' +
+                '\n'+" chairman='" + chairman + '\'' +
+                '\n'+" oneMemberOfCommission='" + oneMemberOfCommission + '\'' +
+                '\n'+" twoMemberOfCommission='" + twoMemberOfCommission + '\'' +
+                '\n'+" threeMemberOfCommission='" + threeMemberOfCommission + '\'' +
+                '\n'+" fourMemberOfCommission='" + fourMemberOfCommission + '\'' +
+                '\n'+" subReport=" + subReport +
+                '}';
+    }
 }

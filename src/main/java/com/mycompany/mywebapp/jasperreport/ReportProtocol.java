@@ -1,13 +1,11 @@
 package com.mycompany.mywebapp.jasperreport;
 
 import com.mycompany.mywebapp.dto.jasper.protocol.JRProtocolDto;
-import com.mycompany.mywebapp.dto.jasper.protocol.SubJREmployeeDto;
 import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.entity.Protocol;
 import com.mycompany.mywebapp.repository.EmployeeRepository;
 import com.mycompany.mywebapp.repository.ProtocolRepository;
 import com.mycompany.mywebapp.сonverter.jasper.protocol.JRProtocolConverter;
-import com.mycompany.mywebapp.сonverter.jasper.protocol.SubJREmployeeConverter;
 import net.sf.jasperreports.engine.*;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,12 +25,12 @@ public class ReportProtocol {
     @Autowired
     JRProtocolConverter jrProtocolConverter;
 
-    @Autowired
-    SubJREmployeeConverter jrEmployeeConverter;
+//    @Autowired
+//    SubJREmployeeConverter jrEmployeeConverter;
     public String generateReport() {
 
         try {
-            String reportPath = "C:\\Users\\Tolik\\Desktop\\MyWebApp\\src\\main\\resources";
+            String reportPath = "C:\\Users\\Anato\\Desktop\\MyWebApp\\src\\main\\resources";
 
             Optional<Protocol> protocolRepo = protocolRepository.findById(1L);
             Protocol protocol = new Protocol();
@@ -46,7 +44,7 @@ public class ReportProtocol {
             if(employeeRepo.isPresent()){
                 employee = employeeRepo.get();
             }
-            SubJREmployeeDto subJREmployeeDto = jrEmployeeConverter.entityToDto(employee);
+//            SubJREmployeeDto subJREmployeeDto = jrEmployeeConverter.entityToDto(employee);
 
 //            Employee employee = employeeRepository.findById(1L);
 

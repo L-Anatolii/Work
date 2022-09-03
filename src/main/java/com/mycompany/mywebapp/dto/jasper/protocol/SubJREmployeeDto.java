@@ -72,13 +72,13 @@ public class SubJREmployeeDto {
 
     @Override
     public String toString() {
-        return "SubJREmployeeDto{" +
-                "employeeId=" + employeeId +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", jobPosition='" + jobPosition + '\'' +
-                ", jasperCertification=" + jasperCertification.size() +
+        return '\n'+"   SubJREmployeeDto{" +
+                '\n'+"      employeeId=" + employeeId +
+                '\n'+"      firstName='" + firstName + '\'' +
+                '\n'+"      lastName='" + lastName + '\'' +
+                '\n'+"      patronymic='" + patronymic + '\'' +
+                '\n'+"      jobPosition='" + jobPosition + '\'' +
+              '\n'+"      jasperCertification=" + jasperCertification +
                 '}';
     }
 }

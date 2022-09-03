@@ -59,11 +59,11 @@ public class SubJRCertificationDto {
     @Override
     public String toString() {
         return "SubJRCertificationDto{" +
-                "employeeId=" + employeeId +
-                ", programId=" + programId +
-                ", numberCertification=" + numberCertification +
-                ", reason='" + reason + '\'' +
-                ", programDto=" + programDto +
+                '\n'+"         employeeId=" + employeeId +
+                '\n'+"         programId=" + programId +
+                '\n'+"         numberCertification=" + numberCertification +
+                '\n'+"         reason='" + reason + '\'' +
+                '\n'+"         programDto=" + programDto +
                 '}';
     }
 }
