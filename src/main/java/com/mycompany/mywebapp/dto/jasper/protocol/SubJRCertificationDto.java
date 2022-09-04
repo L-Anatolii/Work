@@ -6,31 +6,17 @@ import org.springframework.stereotype.Component;
 @Component
 public class SubJRCertificationDto {
 
-    private Long employeeId;
-    private Long programId;
     private Integer numberCertification;
     private String reason;
+    private String titleOfProgram;
 
-    private SafetyTrainingProgramDto programDto;
+    private Integer programNumber;
 
-    public SubJRCertificationDto() {
-    }
+    private Integer duration;
 
-    public Long getEmployeeId() {
-        return employeeId;
-    }
+    private String approvedTheProgram;
 
-    public void setEmployeeId(Long employeeId) {
-        this.employeeId = employeeId;
-    }
-
-    public Long getProgramId() {
-        return programId;
-    }
-
-    public void setProgramId(Long programId) {
-        this.programId = programId;
-    }
+    private String dateOfApproval;
 
     public Integer getNumberCertification() {
         return numberCertification;
@@ -38,14 +24,6 @@ public class SubJRCertificationDto {
 
     public void setNumberCertification(Integer numberCertification) {
         this.numberCertification = numberCertification;
-    }
-
-    public SafetyTrainingProgramDto getProgramDto() {
-        return programDto;
-    }
-
-    public void setProgramDto(SafetyTrainingProgramDto programDto) {
-        this.programDto = programDto;
     }
 
     public String getReason() {
@@ -56,14 +34,56 @@ public class SubJRCertificationDto {
         this.reason = reason;
     }
 
+    public String getTitleOfProgram() {
+        return titleOfProgram;
+    }
+
+    public void setTitleOfProgram(String titleOfProgram) {
+        this.titleOfProgram = titleOfProgram;
+    }
+
+    public Integer getProgramNumber() {
+        return programNumber;
+    }
+
+    public void setProgramNumber(Integer programNumber) {
+        this.programNumber = programNumber;
+    }
+
+    public Integer getDuration() {
+        return duration;
+    }
+
+    public void setDuration(Integer duration) {
+        this.duration = duration;
+    }
+
+    public String getApprovedTheProgram() {
+        return approvedTheProgram;
+    }
+
+    public void setApprovedTheProgram(String approvedTheProgram) {
+        this.approvedTheProgram = approvedTheProgram;
+    }
+
+    public String getDateOfApproval() {
+        return dateOfApproval;
+    }
+
+    public void setDateOfApproval(String dateOfApproval) {
+        this.dateOfApproval = dateOfApproval;
+    }
+
     @Override
     public String toString() {
         return "SubJRCertificationDto{" +
-                '\n'+"         employeeId=" + employeeId +
-                '\n'+"         programId=" + programId +
                 '\n'+"         numberCertification=" + numberCertification +
                 '\n'+"         reason='" + reason + '\'' +
-                '\n'+"         programDto=" + programDto +
+                '\n'+"         titleOfProgram='" + titleOfProgram + '\'' +
+                '\n'+"         programNumber=" + programNumber +
+                '\n'+"         duration=" + duration +
+                '\n'+"         approvedTheProgram='" + approvedTheProgram + '\'' +
+                '\n'+"         dateOfApproval='" + dateOfApproval + '\'' +
                 '}';
     }
 }

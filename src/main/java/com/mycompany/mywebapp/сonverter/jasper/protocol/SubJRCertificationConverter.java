@@ -18,9 +18,9 @@ public class SubJRCertificationConverter {
     public SubJRCertificationDto entityToDto(Certification certification){
         SubJRCertificationDto dto = new SubJRCertificationDto();
         dto.setNumberCertification(certification.getNumber());
-        dto.setEmployeeId(certification.getEmployee().getId());
-        dto.setProgramId(certification.getProgram().getId());
-        dto.setProgramDto(converter.entityToDto(certification.getProgram()));
+//        dto.setEmployeeId(certification.getEmployee().getId());
+//        dto.setProgramId(certification.getProgram().getId());
+//        dto.setProgramDto(converter.entityToDto(certification.getProgram()));
         dto.setReason(new String("Очередная"));
         return dto;
     }

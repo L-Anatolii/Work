@@ -48,19 +48,13 @@ public class JRProtocolConverter {
             List<SubJRCertificationDto> subJRCertificationDtos = new ArrayList<>();
             for(Certification certification : certifications){
                 SubJRCertificationDto subJRCertificationDto = new SubJRCertificationDto();
-                subJRCertificationDto.setEmployeeId(certification.getEmployee().getId());
-                subJRCertificationDto.setProgramId(certification.getProgram().getId());
                 subJRCertificationDto.setNumberCertification(certification.getNumber());
                 subJRCertificationDto.setReason("Очередная");
-
-                SafetyTrainingProgramDto programDto = new SafetyTrainingProgramDto();
-                programDto.setApprovedTheProgram(certification.getProgram().getApprovedTheProgram().getName());
-                programDto.setDuration(certification.getProgram().getDuration());
-                programDto.setProgramNumber(certification.getProgram().getProgramNumber());
-                programDto.setDateOfApproval(converter.dateToString(certification.getProgram().getDateOfApproval()));
-                programDto.setTitleOfProgram(certification.getProgram().getTitleOfProgram());
-
-                subJRCertificationDto.setProgramDto(programDto);
+                subJRCertificationDto.setTitleOfProgram(certification.getProgram().getTitleOfProgram());
+                subJRCertificationDto.setApprovedTheProgram(certification.getProgram().getApprovedTheProgram().getName());
+                subJRCertificationDto.setProgramNumber(certification.getProgram().getProgramNumber());
+                subJRCertificationDto.setDuration(certification.getProgram().getDuration());
+                subJRCertificationDto.setDateOfApproval(converter.dateToString(certification.getProgram().getDateOfApproval()));
                 subJRCertificationDtos.add(subJRCertificationDto);
             }
             subJREmployeeDto.setJasperCertification(subJRCertificationDtos);

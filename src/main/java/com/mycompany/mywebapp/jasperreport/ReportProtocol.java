@@ -1,6 +1,7 @@
 package com.mycompany.mywebapp.jasperreport;
 
 import com.mycompany.mywebapp.dto.jasper.protocol.JRProtocolDto;
+import com.mycompany.mywebapp.dto.jasper.protocol.SubJREmployeeDto;
 import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.entity.Protocol;
 import com.mycompany.mywebapp.repository.EmployeeRepository;
@@ -20,13 +21,8 @@ public class ReportProtocol {
     ProtocolRepository protocolRepository;
 
     @Autowired
-    EmployeeRepository employeeRepository;
-
-    @Autowired
     JRProtocolConverter jrProtocolConverter;
 
-//    @Autowired
-//    SubJREmployeeConverter jrEmployeeConverter;
     public String generateReport() {
 
         try {
@@ -38,22 +34,11 @@ public class ReportProtocol {
                 protocol = protocolRepo.get();
             }
             JRProtocolDto jrProtocolDto = jrProtocolConverter.entityToDto(protocol);
-
-            Optional<Employee> employeeRepo = employeeRepository.findById(1L);
-            Employee employee = new Employee();
-            if(employeeRepo.isPresent()){
-                employee = employeeRepo.get();
+            List<SubJREmployeeDto> employees = new ArrayList<>();
+            employees.add(new SubJREmployeeDto());
+            for (SubJREmployeeDto subEmployees: jrProtocolDto.getSubReport()){
+                employees.add(subEmployees);
             }
-//            SubJREmployeeDto subJREmployeeDto = jrEmployeeConverter.entityToDto(employee);
-
-//            Employee employee = employeeRepository.findById(1L);
-
-
-//            SubJREmployeeDto subJREmployeeDto = jrEmployeeConverter.entityToDto((Employee) protocol.getEmployees());
-
-            List<JRProtocolDto> employees = new ArrayList<>();
-            employees.add(jrProtocolDto);
-//            employees.add((SubJREmployeeDto) jrProtocolDto.getSubReport());
 
             JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(employees);
             Map<String, Object> parametrs = new HashMap();
