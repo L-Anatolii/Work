@@ -53,7 +53,8 @@ public class ReportProtocol {
             // Compile the Jasper report from .jrxml to .japser
             JasperReport jasperReport = JasperCompileManager
 //                    .compileReport(reportPath + "\\Protocol.jrxml");
-                    .compileReport(reportPath + "\\Protocol с Dto.jrxml");
+                    .compileReport(reportPath + "\\Protocol с Dto(list inner list).jrxml");
+//                    .compileReport(reportPath + "\\Protocol с Dto.jrxml");
 
             // Fill the report
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametrs,jrBeanCollectionDataSource);
