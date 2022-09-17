@@ -39,15 +39,15 @@ public class Protocol {
     @Temporal(TemporalType.DATE)
     private Date dateOfExamination;
     @Column (name = "chairman")
-    private JobPositions chairman;
+    private Long chairman;
     @Column (name = "one_member_of_commission")
-    private JobPositions oneMemberOfCommission;
+    private Long oneMemberOfCommission;
     @Column (name = "two_member_of_commission")
-    private JobPositions twoMemberOfCommission;
+    private Long twoMemberOfCommission;
     @Column (name = "three_member_of_commission")
-    private JobPositions threeMemberOfCommission;
+    private Long threeMemberOfCommission;
     @Column (name = "four_member_of_commission")
-    private JobPositions fourMemberOfCommission;
+    private Long fourMemberOfCommission;
 
 
     //заменить на fetch = FetchType.LAZY//
@@ -74,43 +74,43 @@ public class Protocol {
         this.dateOfExamination = dateOfExamination;
     }
 
-    public JobPositions getChairman() {
+    public Long getChairman() {
         return chairman;
     }
 
-    public void setChairman(JobPositions chairman) {
+    public void setChairman(Long chairman) {
         this.chairman = chairman;
     }
 
-    public JobPositions getOneMemberOfCommission() {
+    public Long getOneMemberOfCommission() {
         return oneMemberOfCommission;
     }
 
-    public void setOneMemberOfCommission(JobPositions oneMemberOfCommission) {
+    public void setOneMemberOfCommission(Long oneMemberOfCommission) {
         this.oneMemberOfCommission = oneMemberOfCommission;
     }
 
-    public JobPositions getTwoMemberOfCommission() {
+    public Long getTwoMemberOfCommission() {
         return twoMemberOfCommission;
     }
 
-    public void setTwoMemberOfCommission(JobPositions twoMemberOfCommission) {
+    public void setTwoMemberOfCommission(Long twoMemberOfCommission) {
         this.twoMemberOfCommission = twoMemberOfCommission;
     }
 
-    public JobPositions getThreeMemberOfCommission() {
+    public Long getThreeMemberOfCommission() {
         return threeMemberOfCommission;
     }
 
-    public void setThreeMemberOfCommission(JobPositions threeMemberOfCommission) {
+    public void setThreeMemberOfCommission(Long threeMemberOfCommission) {
         this.threeMemberOfCommission = threeMemberOfCommission;
     }
 
-    public JobPositions getFourMemberOfCommission() {
+    public Long getFourMemberOfCommission() {
         return fourMemberOfCommission;
     }
 
-    public void setFourMemberOfCommission(JobPositions fourMemberOfCommission) {
+    public void setFourMemberOfCommission(Long fourMemberOfCommission) {
         this.fourMemberOfCommission = fourMemberOfCommission;
     }
 
@@ -121,6 +121,4 @@ public class Protocol {
     public void setEmployees(Set<Employee> employees) {
         this.employees = employees;
     }
-
-
 }

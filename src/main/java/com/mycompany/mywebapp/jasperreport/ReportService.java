@@ -41,12 +41,12 @@ public class ReportService {
 
 
             Map<String, Object> parametrs = new HashMap();
-            parametrs.put("Chairman",protocol.getChairman().getName());
-            parametrs.put("OneMemberOfCommission",protocol.getOneMemberOfCommission().getName());
-            parametrs.put("TwoMemberOfCommission",protocol.getTwoMemberOfCommission().getName());
-            parametrs.put("ThreeMemberOfCommission",protocol.getThreeMemberOfCommission().getName());
-            parametrs.put("FourMemberOfCommission",protocol.getFourMemberOfCommission().getName());
-            parametrs.put("DateOfExamination",protocol.getDateOfExamination());
+            parametrs.put("Chairman",protocol.getChairman().toString());
+            parametrs.put("OneMemberOfCommission",protocol.getOneMemberOfCommission().toString());
+            parametrs.put("TwoMemberOfCommission",protocol.getTwoMemberOfCommission().toString());
+            parametrs.put("ThreeMemberOfCommission",protocol.getThreeMemberOfCommission().toString());
+            parametrs.put("FourMemberOfCommission",protocol.getFourMemberOfCommission().toString());
+            parametrs.put("DateOfExamination",protocol.getDateOfExamination().toString());
             parametrs.put("CollectionBeanEmployee",jrBeanCollectionDataSource);
 
             // Compile the Jasper report from .jrxml to .japser

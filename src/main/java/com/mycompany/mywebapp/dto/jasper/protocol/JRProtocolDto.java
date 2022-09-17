@@ -12,15 +12,16 @@ public class JRProtocolDto {
 
     private Long protocolId;
     private String dateOfExamination;
-    private String chairman;
-    private String oneMemberOfCommission;
-    private String twoMemberOfCommission;
-    private String threeMemberOfCommission;
-    private String fourMemberOfCommission;
+    private Long chairman;
+    private Long oneMemberOfCommission;
+    private Long twoMemberOfCommission;
+    private Long threeMemberOfCommission;
+    private Long fourMemberOfCommission;
     private List<SubJREmployeeDto> subReport = new ArrayList<>();
 
     public JRProtocolDto() {
     }
+
     public Long getProtocolId() {
         return protocolId;
     }
@@ -37,43 +38,43 @@ public class JRProtocolDto {
         this.dateOfExamination = dateOfExamination;
     }
 
-    public String getChairman() {
+    public Long getChairman() {
         return chairman;
     }
 
-    public void setChairman(String chairman) {
+    public void setChairman(Long chairman) {
         this.chairman = chairman;
     }
 
-    public String getOneMemberOfCommission() {
+    public Long getOneMemberOfCommission() {
         return oneMemberOfCommission;
     }
 
-    public void setOneMemberOfCommission(String oneMemberOfCommission) {
+    public void setOneMemberOfCommission(Long oneMemberOfCommission) {
         this.oneMemberOfCommission = oneMemberOfCommission;
     }
 
-    public String getTwoMemberOfCommission() {
+    public Long getTwoMemberOfCommission() {
         return twoMemberOfCommission;
     }
 
-    public void setTwoMemberOfCommission(String twoMemberOfCommission) {
+    public void setTwoMemberOfCommission(Long twoMemberOfCommission) {
         this.twoMemberOfCommission = twoMemberOfCommission;
     }
 
-    public String getThreeMemberOfCommission() {
+    public Long getThreeMemberOfCommission() {
         return threeMemberOfCommission;
     }
 
-    public void setThreeMemberOfCommission(String threeMemberOfCommission) {
+    public void setThreeMemberOfCommission(Long threeMemberOfCommission) {
         this.threeMemberOfCommission = threeMemberOfCommission;
     }
 
-    public String getFourMemberOfCommission() {
+    public Long getFourMemberOfCommission() {
         return fourMemberOfCommission;
     }
 
-    public void setFourMemberOfCommission(String fourMemberOfCommission) {
+    public void setFourMemberOfCommission(Long fourMemberOfCommission) {
         this.fourMemberOfCommission = fourMemberOfCommission;
     }
 

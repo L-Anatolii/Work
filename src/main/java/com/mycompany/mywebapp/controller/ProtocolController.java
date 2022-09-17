@@ -4,8 +4,10 @@ import com.mycompany.mywebapp.dto.EmployeeDto;
 import com.mycompany.mywebapp.dto.ProtocolDto;
 import com.mycompany.mywebapp.jasperreport.ReportProtocol;
 import com.mycompany.mywebapp.jasperreport.ReportService;
+import com.mycompany.mywebapp.jasperreport.TemplateJasperExample;
 import com.mycompany.mywebapp.service.EmployeeService;
 import com.mycompany.mywebapp.service.ProtocolService;
+import net.sf.jasperreports.engine.JRException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,11 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
 import java.util.List;
 
 @Controller
 public class ProtocolController {
 
+    @Autowired
+    TemplateJasperExample templateJasperExample;
     @Autowired
     private ProtocolService protocolService;
 
@@ -74,4 +79,11 @@ public class ProtocolController {
         reportProtocol.generateReport();
         return "redirect:/pdf1";
     }
+
+    @GetMapping("/pdf2")
+    public String generatePdf2() throws JRException, IOException {
+        templateJasperExample.generateReport();
+        return "redirect:/pdf2";
+    }
+
 }

@@ -1,12 +1,15 @@
 package com.mycompany.mywebapp.сonverter;
 
 import com.mycompany.mywebapp.dto.ProtocolDto;
+import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.entity.Protocol;
+import com.mycompany.mywebapp.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
@@ -15,15 +18,19 @@ public class ProtocolConverter {
     @Autowired
     TypeConverter converter;
 
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+
     public ProtocolDto entityToDto(Protocol protocol){
         ProtocolDto dto = new ProtocolDto();
         dto.setProtocolId(protocol.getId());
         dto.setDateOfExamination(converter.dateToString((Date) protocol.getDateOfExamination()));
-        dto.setChairman(TypeConverter.enamToString(protocol.getChairman()));
-        dto.setOneMemberOfCommission(TypeConverter.enamToString(protocol.getOneMemberOfCommission()));
-        dto.setTwoMemberOfCommission(TypeConverter.enamToString(protocol.getTwoMemberOfCommission()));
-        dto.setThreeMemberOfCommission(TypeConverter.enamToString(protocol.getThreeMemberOfCommission()));
-        dto.setFourMemberOfCommission(TypeConverter.enamToString(protocol.getFourMemberOfCommission()));
+        dto.setChairman(protocol.getChairman());
+        dto.setOneMemberOfCommission(protocol.getOneMemberOfCommission());
+        dto.setTwoMemberOfCommission(protocol.getTwoMemberOfCommission());
+        dto.setThreeMemberOfCommission(protocol.getThreeMemberOfCommission());
+        dto.setFourMemberOfCommission(protocol.getFourMemberOfCommission());
         return dto;
     }
 
@@ -35,12 +42,11 @@ public class ProtocolConverter {
         Protocol protocol =  new Protocol();
         protocol.setId(protocolDto.getProtocolId());
         protocol.setDateOfExamination(converter.stringToDate(protocolDto.getDateOfExamination()));
-        protocol.setChairman(TypeConverter.StringToEnam(protocolDto.getChairman()));
-        protocol.setOneMemberOfCommission(TypeConverter.StringToEnam(protocolDto.getOneMemberOfCommission()));
-        protocol.setTwoMemberOfCommission(TypeConverter.StringToEnam(protocolDto.getTwoMemberOfCommission()));
-        protocol.setThreeMemberOfCommission(TypeConverter.StringToEnam(protocolDto.getThreeMemberOfCommission()));
-        protocol.setFourMemberOfCommission(TypeConverter.StringToEnam(protocolDto.getFourMemberOfCommission()));
-
+        protocol.setChairman(protocolDto.getChairman());
+        protocol.setOneMemberOfCommission(protocolDto.getOneMemberOfCommission());
+        protocol.setTwoMemberOfCommission(protocolDto.getTwoMemberOfCommission());
+        protocol.setThreeMemberOfCommission(protocolDto.getThreeMemberOfCommission());
+        protocol.setFourMemberOfCommission(protocolDto.getFourMemberOfCommission());
         return protocol;
     }
 

@@ -19,10 +19,43 @@ public class ReportProtocol {
 
     @Autowired
     ProtocolRepository protocolRepository;
-
     @Autowired
     JRProtocolConverter jrProtocolConverter;
+    @Autowired
+    EmployeeRepository employeeRepository;
 
+    public String fullName(Long employee){
+        Optional<Employee> person = employeeRepository.findById(employee);
+        StringBuilder str = new StringBuilder();
+        if(person.isPresent()){
+            Employee emp = person.get();
+            str.append(emp.getFirstName().substring(0, 1)+".");
+            str.append(emp.getPatronymic().substring(0, 1)+". ");
+            str.append(emp.getLastName());
+        }
+        return str.toString();
+    }
+    public String employeeWithPosition(Long employee){
+        Optional<Employee> person = employeeRepository.findById(employee);
+        StringBuilder str = new StringBuilder();
+        if(person.isPresent()){
+            Employee emp = person.get();
+            str.append(emp.getLastName()+" ");
+            str.append(emp.getFirstName()+" ");
+            str.append(emp.getPatronymic()+" - ");
+            String[] arr = emp.getPosition().getName().split(" ");
+            for(int i = 0; i < arr.length; i ++)
+            {
+                if(i==0){
+                    str.append(arr[i].toLowerCase()+" ");
+                }
+                if(i!=0){
+                    str.append(arr[i]+" ");
+                }
+            }
+        }
+        return str.toString();
+    }
     public String generateReport() {
 
         try {
@@ -42,12 +75,17 @@ public class ReportProtocol {
 
             JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(employees);
             Map<String, Object> parametrs = new HashMap();
-            parametrs.put("Chairman",jrProtocolDto.getChairman());
-            parametrs.put("OneMemberOfCommission",jrProtocolDto.getOneMemberOfCommission());
-            parametrs.put("TwoMemberOfCommission",jrProtocolDto.getTwoMemberOfCommission());
-            parametrs.put("ThreeMemberOfCommission",jrProtocolDto.getThreeMemberOfCommission());
-            parametrs.put("FourMemberOfCommission",jrProtocolDto.getFourMemberOfCommission());
             parametrs.put("DateOfExamination",protocol.getDateOfExamination());
+            parametrs.put("Chairman",employeeWithPosition(jrProtocolDto.getChairman()));
+            parametrs.put("OneMemberOfCommission",employeeWithPosition(jrProtocolDto.getOneMemberOfCommission()));
+            parametrs.put("TwoMemberOfCommission",employeeWithPosition(jrProtocolDto.getTwoMemberOfCommission()));
+            parametrs.put("ThreeMemberOfCommission",employeeWithPosition(jrProtocolDto.getThreeMemberOfCommission()));
+            parametrs.put("FourMemberOfCommission",employeeWithPosition(jrProtocolDto.getFourMemberOfCommission()));
+            parametrs.put("FullNameChairman",fullName(jrProtocolDto.getChairman()));
+            parametrs.put("FullNameOneMemberOfCommission",fullName(jrProtocolDto.getOneMemberOfCommission()));
+            parametrs.put("FullNameTwoMemberOfCommission",fullName(jrProtocolDto.getTwoMemberOfCommission()));
+            parametrs.put("FullNameThreeMemberOfCommission",fullName(jrProtocolDto.getThreeMemberOfCommission()));
+            parametrs.put("FullNameFourMemberOfCommission",fullName(jrProtocolDto.getFourMemberOfCommission()));
             parametrs.put("CollectionBeanEmployee",jrBeanCollectionDataSource);
 
             // Compile the Jasper report from .jrxml to .japser
@@ -55,6 +93,7 @@ public class ReportProtocol {
 //                    .compileReport(reportPath + "\\Protocol.jrxml");
                     .compileReport(reportPath + "\\Protocol с Dto(list inner list).jrxml");
 //                    .compileReport(reportPath + "\\Protocol с Dto.jrxml");
+//                    .compileReport(reportPath + "\\Group.jrxml");
 
             // Fill the report
             JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parametrs,jrBeanCollectionDataSource);

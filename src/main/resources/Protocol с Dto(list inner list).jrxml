@@ -34,6 +34,11 @@
 	<parameter name="ThreeMemberOfCommission" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="FourMemberOfCommission" class="java.lang.String" isForPrompting="false"/>
 	<parameter name="CollectionBeanEmployee" class="net.sf.jasperreports.engine.data.JRBeanCollectionDataSource"/>
+	<parameter name="FullNameChairman" class="java.lang.String"/>
+	<parameter name="FullNameOneMemberOfCommission" class="java.lang.String"/>
+	<parameter name="FullNameTwoMemberOfCommission" class="java.lang.String"/>
+	<parameter name="FullNameThreeMemberOfCommission" class="java.lang.String"/>
+	<parameter name="FullNameFourMemberOfCommission" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT * FROM employees]]>
 	</queryString>
@@ -382,8 +387,8 @@
 				</textElement>
 				<text><![CDATA[количество часов]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="310" y="113" width="228" height="14" uuid="b72aa77e-cdea-49d5-9a45-730a3728ce21">
+			<textField textAdjust="ScaleFont">
+				<reportElement x="145" y="113" width="393" height="14" uuid="b72aa77e-cdea-49d5-9a45-730a3728ce21">
 					<property name="com.jaspersoft.studio.unit.x" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -393,12 +398,12 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Arial" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{Chairman}.toLowerCase()]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{Chairman}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="310" y="138" width="228" height="14" uuid="b1668520-0e9a-41e7-82a4-394b89de85dc">
+			<textField textAdjust="ScaleFont">
+				<reportElement x="99" y="138" width="439" height="14" uuid="b1668520-0e9a-41e7-82a4-394b89de85dc">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
@@ -407,12 +412,12 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Arial" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{OneMemberOfCommission}.substring(0,1).toLowerCase()+ $P{OneMemberOfCommission}.substring(1,$P{OneMemberOfCommission}.length())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{OneMemberOfCommission}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="310" y="161" width="228" height="14" uuid="7c0c99c8-cef3-44c3-8be0-2e4208edc19c">
+			<textField textAdjust="ScaleFont">
+				<reportElement x="100" y="161" width="438" height="14" uuid="7c0c99c8-cef3-44c3-8be0-2e4208edc19c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -420,12 +425,12 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Arial" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{TwoMemberOfCommission}.substring(0,1).toLowerCase()+ $P{TwoMemberOfCommission}.substring(1,$P{TwoMemberOfCommission}.length())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{TwoMemberOfCommission}]]></textFieldExpression>
 			</textField>
-			<textField>
-				<reportElement x="310" y="184" width="228" height="14" uuid="ca87e4e8-e007-48b1-9120-8bc639d24ae8">
+			<textField textAdjust="ScaleFont">
+				<reportElement x="100" y="207" width="438" height="14" uuid="1532d5d8-2e32-4542-a7b0-866b616ccde2">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -433,22 +438,9 @@
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
 				</box>
 				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Arial" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$P{ThreeMemberOfCommission}.substring(0,1).toLowerCase()+ $P{ThreeMemberOfCommission}.substring(1,$P{ThreeMemberOfCommission}.length())]]></textFieldExpression>
-			</textField>
-			<textField>
-				<reportElement x="310" y="207" width="228" height="14" uuid="1532d5d8-2e32-4542-a7b0-866b616ccde2">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<box>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-				</box>
-				<textElement textAlignment="Left" verticalAlignment="Middle">
-					<font fontName="Arial" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
-				</textElement>
-				<textFieldExpression><![CDATA[$P{FourMemberOfCommission}.substring(0,1).toLowerCase()+ $P{FourMemberOfCommission}.substring(1,$P{FourMemberOfCommission}.length())]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{FourMemberOfCommission}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="437" y="61" width="100" height="18" uuid="af533a68-e581-44f1-a3df-a8370d52e7ff">
@@ -465,7 +457,7 @@
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd.MM.yyyy").format($P{DateOfExamination})]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="504" width="539" height="35" uuid="3fd4c225-dbb2-4a47-92e1-2de7d7b0588b">
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="503" width="539" height="35" uuid="3fd4c225-dbb2-4a47-92e1-2de7d7b0588b">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
@@ -506,7 +498,7 @@
 							<textFieldExpression><![CDATA[$F{lastName}+'\n'+$F{firstName}+'\n'+$F{patronymic}]]></textFieldExpression>
 						</textField>
 						<componentElement>
-							<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="210" y="0" width="329" height="35" uuid="a71e5123-9f75-4297-ac0d-2fc0a610d758">
+							<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="282" y="0" width="257" height="35" uuid="a71e5123-9f75-4297-ac0d-2fc0a610d758">
 								<property name="com.jaspersoft.studio.unit.width" value="px"/>
 								<property name="com.jaspersoft.studio.unit.height" value="px"/>
 								<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
@@ -515,9 +507,9 @@
 								<datasetRun subDataset="Order Lines Dataset" uuid="a15babb0-5e9c-4369-9dff-6437e0eb8e01">
 									<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{jasperCertification})]]></dataSourceExpression>
 								</datasetRun>
-								<jr:listContents height="35" width="329">
+								<jr:listContents height="35" width="257">
 									<textField textAdjust="StretchHeight">
-										<reportElement positionType="Float" x="168" y="0" width="88" height="35" uuid="ccd2138b-cfc1-4bd9-a123-2aaa84183173">
+										<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="79" y="0" width="87" height="35" uuid="ccd2138b-cfc1-4bd9-a123-2aaa84183173">
 											<property name="com.jaspersoft.studio.unit.width" value="px"/>
 										</reportElement>
 										<box>
@@ -528,14 +520,15 @@
 											<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 										</box>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+											<font fontName="Arial" size="9" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 										</textElement>
-										<textFieldExpression><![CDATA[$F{reason}]]></textFieldExpression>
+										<textFieldExpression><![CDATA[$F{reason}.toLowerCase()]]></textFieldExpression>
 									</textField>
 									<textField textAdjust="StretchHeight">
-										<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="88" y="0" width="80" height="35" backcolor="#FFFFFF" uuid="79e1ea0b-a792-4412-8ab2-1673144806c0">
+										<reportElement stretchType="RelativeToBandHeight" mode="Opaque" x="0" y="0" width="79" height="35" backcolor="#FFFFFF" uuid="79e1ea0b-a792-4412-8ab2-1673144806c0">
 											<property name="com.jaspersoft.studio.unit.width" value="px"/>
 											<property name="com.jaspersoft.studio.unit.height" value="px"/>
+											<property name="com.jaspersoft.studio.unit.x" value="px"/>
 										</reportElement>
 										<box topPadding="0" leftPadding="0" bottomPadding="0" rightPadding="0">
 											<pen lineWidth="0.0" lineStyle="Solid"/>
@@ -550,7 +543,7 @@
 										<textFieldExpression><![CDATA["сдано"+'\n'+"№ "+$F{numberCertification}]]></textFieldExpression>
 									</textField>
 									<textField textAdjust="StretchHeight">
-										<reportElement positionType="Float" x="256" y="0" width="73" height="35" uuid="81e6768d-9dfb-4fb7-b929-e5360635f6b8">
+										<reportElement positionType="Float" x="166" y="0" width="91" height="35" forecolor="#4EED39" backcolor="#E5F1FB" uuid="81e6768d-9dfb-4fb7-b929-e5360635f6b8">
 											<property name="com.jaspersoft.studio.unit.width" value="px"/>
 										</reportElement>
 										<box>
@@ -561,31 +554,15 @@
 											<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 										</box>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="10" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+											<font fontName="Arial" size="9" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 										</textElement>
 										<textFieldExpression><![CDATA[$F{titleOfProgram}]]></textFieldExpression>
 									</textField>
-									<staticText>
-										<reportElement stretchType="RelativeToBandHeight" x="0" y="0" width="88" height="35" uuid="cf7a7ff4-dd5e-4b4b-aef8-e59292986881">
-											<property name="com.jaspersoft.studio.unit.y" value="px"/>
-										</reportElement>
-										<box>
-											<pen lineWidth="0.0" lineStyle="Solid"/>
-											<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-											<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-											<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-											<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-										</box>
-										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="8" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
-										</textElement>
-										<text><![CDATA[ГКС, КЦ-5]]></text>
-									</staticText>
 								</jr:listContents>
 							</jr:list>
 						</componentElement>
 						<componentElement>
-							<reportElement stretchType="RelativeToBandHeight" x="110" y="0" width="100" height="35" uuid="90eb0eff-4a24-461e-ad87-6368c6565796">
+							<reportElement stretchType="RelativeToBandHeight" x="110" y="0" width="91" height="35" uuid="90eb0eff-4a24-461e-ad87-6368c6565796">
 								<property name="com.jaspersoft.studio.unit.width" value="px"/>
 								<property name="com.jaspersoft.studio.unit.height" value="px"/>
 								<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
@@ -594,9 +571,9 @@
 								<datasetRun subDataset="Order Lines Dataset" uuid="565370f3-00d8-400f-a17e-40486269aa09">
 									<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($F{jasperCertification})]]></dataSourceExpression>
 								</datasetRun>
-								<jr:listContents height="35" width="100">
+								<jr:listContents height="35" width="91">
 									<textField textAdjust="StretchHeight">
-										<reportElement positionType="Float" x="0" y="0" width="100" height="35" uuid="8759ea6b-0c1d-4366-bbcd-40e235bb1e44">
+										<reportElement positionType="Float" x="0" y="0" width="91" height="35" uuid="8759ea6b-0c1d-4366-bbcd-40e235bb1e44">
 											<property name="com.jaspersoft.studio.unit.width" value="px"/>
 										</reportElement>
 										<box>
@@ -607,18 +584,35 @@
 											<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 										</box>
 										<textElement textAlignment="Center" verticalAlignment="Middle">
-											<font fontName="Arial" size="10" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+											<font fontName="Arial" size="9" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 										</textElement>
 										<textFieldExpression><![CDATA[$F{titleOfProgram}]]></textFieldExpression>
 									</textField>
 								</jr:listContents>
 							</jr:list>
 						</componentElement>
+						<staticText>
+							<reportElement stretchType="RelativeToBandHeight" x="201" y="0" width="81" height="35" uuid="13cd29a5-0780-414c-ac29-bdeb8838554b">
+								<property name="com.jaspersoft.studio.unit.y" value="px"/>
+								<property name="com.jaspersoft.studio.unit.width" value="px"/>
+							</reportElement>
+							<box>
+								<pen lineWidth="0.0" lineStyle="Solid"/>
+								<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+								<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+							</box>
+							<textElement textAlignment="Center" verticalAlignment="Middle">
+								<font fontName="Arial" size="9" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+							</textElement>
+							<text><![CDATA[ГКС, КЦ-5]]></text>
+						</staticText>
 					</jr:listContents>
 				</jr:list>
 			</componentElement>
 			<staticText>
-				<reportElement x="0" y="439" width="27" height="65" uuid="569a56c9-5a7f-49f2-a0ed-60773857a452">
+				<reportElement x="0" y="438" width="27" height="65" uuid="569a56c9-5a7f-49f2-a0ed-60773857a452">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -635,7 +629,7 @@
 				<text><![CDATA[№    п/п]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="27" y="439" width="83" height="65" uuid="53227005-b677-43c3-881b-bd1dbdb3b1b6">
+				<reportElement x="27" y="438" width="83" height="65" uuid="53227005-b677-43c3-881b-bd1dbdb3b1b6">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -652,8 +646,9 @@
 				<text><![CDATA[Ф.И.О.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="110" y="439" width="100" height="65" uuid="0c4f6b08-4db3-4dd1-a99f-adeaba5a7089">
+				<reportElement x="110" y="438" width="91" height="65" uuid="0c4f6b08-4db3-4dd1-a99f-adeaba5a7089">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
 					<pen lineWidth="0.0" lineStyle="Solid"/>
@@ -668,7 +663,7 @@
 				<text><![CDATA[Должность, профессия]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="210" y="439" width="88" height="65" uuid="73bb44c5-9d0a-492e-ac5b-0cc1f5a03765">
+				<reportElement x="201" y="438" width="81" height="65" uuid="73bb44c5-9d0a-492e-ac5b-0cc1f5a03765">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -685,7 +680,7 @@
 				<text><![CDATA[Наименование подразделения (цех, участок, отдел, лаборатория, мастерская и т.д.)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="298" y="439" width="80" height="65" uuid="9dc936c0-3f5b-477b-bc98-16430b68fe0b">
+				<reportElement x="282" y="438" width="79" height="65" uuid="9dc936c0-3f5b-477b-bc98-16430b68fe0b">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -706,7 +701,7 @@
 удостоверения]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="378" y="439" width="88" height="65" uuid="2b7dfa08-9543-4260-913c-b4f4f2ab4122">
+				<reportElement x="361" y="438" width="87" height="65" uuid="2b7dfa08-9543-4260-913c-b4f4f2ab4122">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -728,7 +723,7 @@
 т.д.)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="466" y="439" width="73" height="65" uuid="56c50cc7-2ff0-4f24-8f3b-b93c0995b8a5">
+				<reportElement x="448" y="438" width="91" height="65" uuid="56c50cc7-2ff0-4f24-8f3b-b93c0995b8a5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -742,8 +737,22 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="8" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[Подпись проверяемого]]></text>
+				<text><![CDATA[Подпись
+проверяемого]]></text>
 			</staticText>
+			<textField textAdjust="ScaleFont">
+				<reportElement x="100" y="184" width="438" height="14" uuid="4988f434-e60e-46d7-8dd0-5c7072e349c2">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<box>
+					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="12" isBold="true" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{ThreeMemberOfCommission}]]></textFieldExpression>
+			</textField>
 		</band>
 		<band height="185">
 			<staticText>
@@ -943,8 +952,9 @@
 				<text><![CDATA[/]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="194" y="25" width="90" height="16" uuid="1ac84e31-c42d-4411-ad54-20a51056f8b5">
+				<reportElement x="194" y="25" width="100" height="16" uuid="1ac84e31-c42d-4411-ad54-20a51056f8b5">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
@@ -952,7 +962,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{FullNameOneMemberOfCommission}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="194" y="40" width="90" height="9" uuid="add83ae0-addd-455e-86a5-411d11e13039">
@@ -974,7 +984,7 @@
 				<text><![CDATA[Подпись]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="284" y="25" width="92" height="16" uuid="8ecc8b62-009d-497b-8348-5757657b4367">
+				<reportElement x="294" y="25" width="82" height="16" uuid="8ecc8b62-009d-497b-8348-5757657b4367">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -985,11 +995,12 @@
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[/                         /]]></text>
+				<text><![CDATA[/                      /]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="376" y="25" width="90" height="16" uuid="c0d00e89-50de-4073-840b-f2af8e8af22f">
+				<reportElement x="376" y="25" width="100" height="16" uuid="c0d00e89-50de-4073-840b-f2af8e8af22f">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
@@ -997,7 +1008,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{FullNameTwoMemberOfCommission}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="376" y="40" width="90" height="9" uuid="3406b578-0796-4216-986e-c24c11590dc6">
@@ -1009,7 +1020,7 @@
 				<text><![CDATA[Расшифровка]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="466" y="25" width="70" height="16" uuid="a8ad9fd0-27db-4d11-859d-9265bf86790a">
+				<reportElement x="476" y="25" width="60" height="16" uuid="a8ad9fd0-27db-4d11-859d-9265bf86790a">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1046,8 +1057,9 @@
 				<text><![CDATA[/]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="194" y="49" width="90" height="16" uuid="dba9de15-b8aa-40bf-8b7a-5fe01b3cf6c9">
+				<reportElement x="194" y="49" width="100" height="16" uuid="dba9de15-b8aa-40bf-8b7a-5fe01b3cf6c9">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
@@ -1055,7 +1067,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{FullNameThreeMemberOfCommission}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="194" y="64" width="90" height="9" uuid="eb6b13fb-af2d-4561-ae60-527db6cc4d19">
@@ -1077,7 +1089,7 @@
 				<text><![CDATA[Подпись]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="284" y="49" width="92" height="16" uuid="2cb9858b-65d8-469b-b6e6-afe478805031">
+				<reportElement x="294" y="49" width="82" height="16" uuid="2cb9858b-65d8-469b-b6e6-afe478805031">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1088,11 +1100,12 @@
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[/                         /]]></text>
+				<text><![CDATA[/                      /]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="376" y="49" width="90" height="16" uuid="87522be8-b8c0-4736-af12-a54adc1918f7">
+				<reportElement x="376" y="49" width="100" height="16" uuid="87522be8-b8c0-4736-af12-a54adc1918f7">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
@@ -1100,7 +1113,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{FullNameFourMemberOfCommission}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="376" y="64" width="90" height="9" uuid="9ac045ce-25d1-485f-8ecf-f54bf13238a0">
@@ -1112,7 +1125,7 @@
 				<text><![CDATA[Расшифровка]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="466" y="49" width="70" height="16" uuid="a701620e-7d83-4570-a8ca-502e8a274d3f">
+				<reportElement x="476" y="49" width="60" height="16" uuid="a701620e-7d83-4570-a8ca-502e8a274d3f">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1126,8 +1139,9 @@
 				<text><![CDATA[/]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="376" y="1" width="90" height="16" uuid="a2f84bf9-9cb8-4ce2-851e-acafdab234cd">
+				<reportElement x="376" y="1" width="100" height="16" uuid="a2f84bf9-9cb8-4ce2-851e-acafdab234cd">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
 					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
@@ -1135,7 +1149,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$P{FullNameChairman}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="376" y="16" width="90" height="9" uuid="8494e72c-b30a-4c13-91f7-aef3a1db4ab7">
@@ -1147,7 +1161,7 @@
 				<text><![CDATA[Расшифровка]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="466" y="1" width="70" height="16" uuid="b18bbda7-c36a-41ef-8828-c920c6ca6216">
+				<reportElement x="476" y="1" width="60" height="16" uuid="b18bbda7-c36a-41ef-8828-c920c6ca6216">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1171,7 +1185,7 @@
 				<text><![CDATA[Подпись]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="284" y="1" width="92" height="16" uuid="663f1a8a-00ea-4327-88f3-82a64cfbcd7c">
+				<reportElement x="294" y="1" width="82" height="16" uuid="663f1a8a-00ea-4327-88f3-82a64cfbcd7c">
 					<property name="com.jaspersoft.studio.unit.y" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -1182,7 +1196,7 @@
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[                          /]]></text>
+				<text><![CDATA[/                      /]]></text>
 			</staticText>
 		</band>
 	</detail>

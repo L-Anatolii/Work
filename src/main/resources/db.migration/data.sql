@@ -1,3 +1,22 @@
+INSERT INTO positions(name)
+VALUES ('Машинист ТК');
+INSERT INTO positions(name)
+VALUES ('Машинист ТК');
+INSERT INTO positions(name)
+VALUES ('Начальник управления');
+INSERT INTO positions(name)
+VALUES ('Заместитель начальника управления');
+INSERT INTO positions(name)
+VALUES ('Главный инженер');
+INSERT INTO positions(name)
+VALUES ('Заместитель главного инженера по ОТ, П и ПБ');
+INSERT INTO positions(name)
+VALUES ('Начальник службы (ГКС)');
+INSERT INTO positions(name)
+VALUES ('Начальник части (ВПЧ)');
+INSERT INTO positions(name)
+VALUES ('Начальник службы (АСУ,АиТМ)');
+
 INSERT INTO employees(first_name,job_position,last_name,patronymic)
 VALUES ('Анатолий',5,'Виторович','Лукин');
 INSERT INTO employees(first_name,job_position,last_name,patronymic)

@@ -57,6 +57,10 @@ public class Employee {
             inverseJoinColumns = @JoinColumn(name = "protocol_id"))
     private Set<Protocol> protocols = new HashSet<>();
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "position_id", referencedColumnName = "id")
+    private Position position;
+
     public Employee() {
 
     }
@@ -117,6 +121,13 @@ public class Employee {
         this.protocols = protocols;
     }
 
+    public Position getPosition() {
+        return position;
+    }
+
+    public void setPosition(Position position) {
+        this.position = position;
+    }
 
     @Override
     public boolean equals(Object o) {

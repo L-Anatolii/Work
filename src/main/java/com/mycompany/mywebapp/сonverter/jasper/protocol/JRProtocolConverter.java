@@ -9,15 +9,13 @@ import com.mycompany.mywebapp.entity.Certification;
 import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.entity.Protocol;
 import com.mycompany.mywebapp.entity.SafetyTrainingProgram;
+import com.mycompany.mywebapp.repository.EmployeeRepository;
 import com.mycompany.mywebapp.сonverter.TypeConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.sql.Date;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Component
@@ -29,11 +27,11 @@ public class JRProtocolConverter {
         JRProtocolDto dto = new JRProtocolDto();
         dto.setProtocolId(protocol.getId());
         dto.setDateOfExamination(converter.dateToString((Date) protocol.getDateOfExamination()));
-        dto.setChairman(TypeConverter.enamToString(protocol.getChairman()));
-        dto.setOneMemberOfCommission(TypeConverter.enamToString(protocol.getOneMemberOfCommission()));
-        dto.setTwoMemberOfCommission(TypeConverter.enamToString(protocol.getTwoMemberOfCommission()));
-        dto.setThreeMemberOfCommission(TypeConverter.enamToString(protocol.getThreeMemberOfCommission()));
-        dto.setFourMemberOfCommission(TypeConverter.enamToString(protocol.getFourMemberOfCommission()));
+        dto.setChairman(protocol.getChairman());
+        dto.setOneMemberOfCommission(protocol.getOneMemberOfCommission());
+        dto.setTwoMemberOfCommission(protocol.getTwoMemberOfCommission());
+        dto.setThreeMemberOfCommission(protocol.getThreeMemberOfCommission());
+        dto.setFourMemberOfCommission(protocol.getFourMemberOfCommission());
 
         Set<Employee> employees = protocol.getEmployees();
         List<SubJREmployeeDto> subJREmployeeDtos = new ArrayList<>();
