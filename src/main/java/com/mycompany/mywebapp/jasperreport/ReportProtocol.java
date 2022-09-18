@@ -1,9 +1,11 @@
 package com.mycompany.mywebapp.jasperreport;
 
+import antlr.MismatchedCharException;
 import com.mycompany.mywebapp.dto.jasper.protocol.JRProtocolDto;
 import com.mycompany.mywebapp.dto.jasper.protocol.SubJREmployeeDto;
 import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.entity.Protocol;
+import com.mycompany.mywebapp.exception.EmployeeNotFoundException;
 import com.mycompany.mywebapp.repository.EmployeeRepository;
 import com.mycompany.mywebapp.repository.ProtocolRepository;
 import com.mycompany.mywebapp.сonverter.jasper.protocol.JRProtocolConverter;
@@ -24,38 +26,37 @@ public class ReportProtocol {
     @Autowired
     EmployeeRepository employeeRepository;
 
-    public String fullName(Long employee){
+    public String shortName(Long employee){
         Optional<Employee> person = employeeRepository.findById(employee);
         StringBuilder str = new StringBuilder();
-        if(person.isPresent()){
+        if(person.isPresent()) {
             Employee emp = person.get();
-            str.append(emp.getFirstName().substring(0, 1)+".");
-            str.append(emp.getPatronymic().substring(0, 1)+". ");
+            str.append(emp.getFirstName().substring(0, 1) + ".");
+            str.append(emp.getPatronymic().substring(0, 1) + ". ");
             str.append(emp.getLastName());
         }
         return str.toString();
     }
-    public String employeeWithPosition(Long employee){
-        Optional<Employee> person = employeeRepository.findById(employee);
+    public String fullNameWithPosition(Long employeeId) {
+        Optional<Employee> person = employeeRepository.findById(employeeId);
         StringBuilder str = new StringBuilder();
-        if(person.isPresent()){
+        if (person.isPresent()) {
             Employee emp = person.get();
-            str.append(emp.getLastName()+" ");
-            str.append(emp.getFirstName()+" ");
-            str.append(emp.getPatronymic()+" - ");
+            str.append(emp.getLastName() + " ");
+            str.append(emp.getFirstName() + " ");
+            str.append(emp.getPatronymic() + " - ");
             String[] arr = emp.getPosition().getName().split(" ");
-            for(int i = 0; i < arr.length; i ++)
-            {
-                if(i==0){
-                    str.append(arr[i].toLowerCase()+" ");
-                }
-                if(i!=0){
-                    str.append(arr[i]+" ");
+            for (int i = 0; i < arr.length; i++) {
+                if (i == 0) {
+                    str.append(arr[i].toLowerCase() + " ");
+                } else {
+                    str.append(arr[i] + " ");
                 }
             }
         }
         return str.toString();
     }
+
     public String generateReport() {
 
         try {
@@ -76,16 +77,16 @@ public class ReportProtocol {
             JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(employees);
             Map<String, Object> parametrs = new HashMap();
             parametrs.put("DateOfExamination",protocol.getDateOfExamination());
-            parametrs.put("Chairman",employeeWithPosition(jrProtocolDto.getChairman()));
-            parametrs.put("OneMemberOfCommission",employeeWithPosition(jrProtocolDto.getOneMemberOfCommission()));
-            parametrs.put("TwoMemberOfCommission",employeeWithPosition(jrProtocolDto.getTwoMemberOfCommission()));
-            parametrs.put("ThreeMemberOfCommission",employeeWithPosition(jrProtocolDto.getThreeMemberOfCommission()));
-            parametrs.put("FourMemberOfCommission",employeeWithPosition(jrProtocolDto.getFourMemberOfCommission()));
-            parametrs.put("FullNameChairman",fullName(jrProtocolDto.getChairman()));
-            parametrs.put("FullNameOneMemberOfCommission",fullName(jrProtocolDto.getOneMemberOfCommission()));
-            parametrs.put("FullNameTwoMemberOfCommission",fullName(jrProtocolDto.getTwoMemberOfCommission()));
-            parametrs.put("FullNameThreeMemberOfCommission",fullName(jrProtocolDto.getThreeMemberOfCommission()));
-            parametrs.put("FullNameFourMemberOfCommission",fullName(jrProtocolDto.getFourMemberOfCommission()));
+            parametrs.put("Chairman",fullNameWithPosition(jrProtocolDto.getChairman()));
+            parametrs.put("OneMemberOfCommission",fullNameWithPosition(jrProtocolDto.getOneMemberOfCommission()));
+            parametrs.put("TwoMemberOfCommission",fullNameWithPosition(jrProtocolDto.getTwoMemberOfCommission()));
+            parametrs.put("ThreeMemberOfCommission",fullNameWithPosition(jrProtocolDto.getThreeMemberOfCommission()));
+            parametrs.put("FourMemberOfCommission",fullNameWithPosition(jrProtocolDto.getFourMemberOfCommission()));
+            parametrs.put("FullNameChairman",shortName(jrProtocolDto.getChairman()));
+            parametrs.put("FullNameOneMemberOfCommission",shortName(jrProtocolDto.getOneMemberOfCommission()));
+            parametrs.put("FullNameTwoMemberOfCommission",shortName(jrProtocolDto.getTwoMemberOfCommission()));
+            parametrs.put("FullNameThreeMemberOfCommission",shortName(jrProtocolDto.getThreeMemberOfCommission()));
+            parametrs.put("FullNameFourMemberOfCommission",shortName(jrProtocolDto.getFourMemberOfCommission()));
             parametrs.put("CollectionBeanEmployee",jrBeanCollectionDataSource);
 
             // Compile the Jasper report from .jrxml to .japser

@@ -1196,7 +1196,7 @@
 				<textElement textAlignment="Justified" verticalAlignment="Middle">
 					<font fontName="Arial" size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
-				<text><![CDATA[/                      /]]></text>
+				<text><![CDATA[                       /]]></text>
 			</staticText>
 		</band>
 	</detail>
