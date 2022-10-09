@@ -1,7 +1,5 @@
 package com.mycompany.mywebapp.entity;
 
-import jdk.jfr.Enabled;
-
 import javax.persistence.*;
 
 @Entity(name = "positions" )

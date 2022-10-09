@@ -1,8 +1,9 @@
 package com.mycompany.mywebapp.entity;
 
-import com.mycompany.mywebapp.service.Positions.JobPositions;
 import javax.persistence.*;
-import java.util.*;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @NamedEntityGraph(name = "protocol-with-employees",

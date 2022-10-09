@@ -1,14 +1,11 @@
 package com.mycompany.mywebapp.entity;
 
 import com.mycompany.mywebapp.service.Positions.JobPositions;
-import org.springframework.data.annotation.PersistenceConstructor;
-import org.springframework.data.relational.core.mapping.Table;
-
-import javax.persistence.Id;
-
+import javax.persistence.*;
 import java.util.Date;
 
-@Table("regulationdocuments")
+@Entity
+@Table(name = "regulationdocuments")
 public class RegulationDocument {
 
     @Id
@@ -19,15 +16,6 @@ public class RegulationDocument {
     private Date dateOfApproval;
 
     public RegulationDocument() {
-    }
-
-    @PersistenceConstructor
-    public RegulationDocument(Long id, Integer documentNumber, String titleOfDocument, JobPositions approvedTheDocument, Date dateOfApproval) {
-        this.id = id;
-        this.documentNumber = documentNumber;
-        this.titleOfDocument = titleOfDocument;
-        this.approvedTheDocument = approvedTheDocument;
-        this.dateOfApproval = dateOfApproval;
     }
 
     public Long getId() {

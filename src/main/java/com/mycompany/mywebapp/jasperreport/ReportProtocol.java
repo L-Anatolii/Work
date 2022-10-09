@@ -1,11 +1,9 @@
 package com.mycompany.mywebapp.jasperreport;
 
-import antlr.MismatchedCharException;
 import com.mycompany.mywebapp.dto.jasper.protocol.JRProtocolDto;
 import com.mycompany.mywebapp.dto.jasper.protocol.SubJREmployeeDto;
 import com.mycompany.mywebapp.entity.Employee;
 import com.mycompany.mywebapp.entity.Protocol;
-import com.mycompany.mywebapp.exception.EmployeeNotFoundException;
 import com.mycompany.mywebapp.repository.EmployeeRepository;
 import com.mycompany.mywebapp.repository.ProtocolRepository;
 import com.mycompany.mywebapp.сonverter.jasper.protocol.JRProtocolConverter;
@@ -69,10 +67,14 @@ public class ReportProtocol {
             }
             JRProtocolDto jrProtocolDto = jrProtocolConverter.entityToDto(protocol);
             List<SubJREmployeeDto> employees = new ArrayList<>();
-            employees.add(new SubJREmployeeDto());
+            employees.add(new SubJREmployeeDto());// первый элемент не отображается в списке jasper report
             for (SubJREmployeeDto subEmployees: jrProtocolDto.getSubReport()){
                 employees.add(subEmployees);
             }
+
+            ArrayList<String> listPrograms = new ArrayList<>();
+
+
 
             JRBeanCollectionDataSource jrBeanCollectionDataSource = new JRBeanCollectionDataSource(employees);
             Map<String, Object> parametrs = new HashMap();

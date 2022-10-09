@@ -22,7 +22,8 @@
 		<field name="titleOfProgram" class="java.lang.String"/>
 		<sortField name="titleOfProgram"/>
 	</subDataset>
-	<subDataset name="Dataset1" uuid="dd7a9c4d-abc7-4cb4-936a-c3126b815be8">
+	<subDataset name="ProgramCollectionDataSet" uuid="4668d00b-cb86-4484-bd6b-f7fcde1175e7">
+		<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
 		<queryString>
 			<![CDATA[]]>
 		</queryString>
@@ -343,22 +344,8 @@
 				</textElement>
 				<text><![CDATA[(Ф.И.О., должность)]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="0" y="358" width="539" height="46" uuid="5ee72cd9-02ed-43e9-a0ff-4d57ca3ef92a">
-					<property name="com.jaspersoft.studio.unit.width" value="px"/>
-					<property name="com.jaspersoft.studio.unit.height" value="px"/>
-				</reportElement>
-				<box>
-					<bottomPen lineWidth="1.0" lineStyle="Solid"/>
-				</box>
-				<textElement textAlignment="Justified" verticalAlignment="Middle">
-					<font fontName="Arial" size="12" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
-					<paragraph lineSpacingSize="1.0"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
-			</textField>
 			<staticText>
-				<reportElement x="0" y="404" width="539" height="9" uuid="e40856ab-87fe-442b-a1a1-838799016168">
+				<reportElement x="0" y="476" width="539" height="9" uuid="e40856ab-87fe-442b-a1a1-838799016168">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<textElement textAlignment="Center" verticalAlignment="Top">
@@ -367,7 +354,7 @@
 				<text><![CDATA[№, наименование программы обучения, дата утверждения]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="413" width="539" height="16" uuid="b31c46c2-51ac-4717-9ceb-fa8752d55e88">
+				<reportElement x="0" y="485" width="539" height="16" uuid="b31c46c2-51ac-4717-9ceb-fa8752d55e88">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.y" value="pixel"/>
@@ -381,7 +368,7 @@
 				<textFieldExpression><![CDATA["Text Field"]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="429" width="539" height="9" uuid="38e8e9c7-c9ba-4ff7-b2b4-efb4717ffbb0"/>
+				<reportElement x="0" y="501" width="539" height="9" uuid="38e8e9c7-c9ba-4ff7-b2b4-efb4717ffbb0"/>
 				<textElement textAlignment="Center" verticalAlignment="Top">
 					<font fontName="Arial" size="6" pdfFontName="C:/Users/Anato/Desktop/MyWebApp/src/main/resources/fonts/Times New Roman Cyr Regular.TTF" pdfEncoding="Cp1251" isPdfEmbedded="true"/>
 				</textElement>
@@ -457,7 +444,7 @@
 				<textFieldExpression><![CDATA[new java.text.SimpleDateFormat("dd.MM.yyyy").format($P{DateOfExamination})]]></textFieldExpression>
 			</textField>
 			<componentElement>
-				<reportElement stretchType="RelativeToTallestObject" x="0" y="503" width="539" height="35" uuid="3fd4c225-dbb2-4a47-92e1-2de7d7b0588b">
+				<reportElement stretchType="RelativeToTallestObject" x="0" y="575" width="539" height="35" uuid="3fd4c225-dbb2-4a47-92e1-2de7d7b0588b">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
 				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
@@ -612,7 +599,7 @@
 				</jr:list>
 			</componentElement>
 			<staticText>
-				<reportElement x="0" y="438" width="27" height="65" uuid="569a56c9-5a7f-49f2-a0ed-60773857a452">
+				<reportElement x="0" y="510" width="27" height="65" uuid="569a56c9-5a7f-49f2-a0ed-60773857a452">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -629,7 +616,7 @@
 				<text><![CDATA[№    п/п]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="27" y="438" width="83" height="65" uuid="53227005-b677-43c3-881b-bd1dbdb3b1b6">
+				<reportElement x="27" y="510" width="83" height="65" uuid="53227005-b677-43c3-881b-bd1dbdb3b1b6">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -646,7 +633,7 @@
 				<text><![CDATA[Ф.И.О.]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="110" y="438" width="91" height="65" uuid="0c4f6b08-4db3-4dd1-a99f-adeaba5a7089">
+				<reportElement x="110" y="510" width="91" height="65" uuid="0c4f6b08-4db3-4dd1-a99f-adeaba5a7089">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -663,7 +650,7 @@
 				<text><![CDATA[Должность, профессия]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="201" y="438" width="81" height="65" uuid="73bb44c5-9d0a-492e-ac5b-0cc1f5a03765">
+				<reportElement x="201" y="510" width="81" height="65" uuid="73bb44c5-9d0a-492e-ac5b-0cc1f5a03765">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -680,7 +667,7 @@
 				<text><![CDATA[Наименование подразделения (цех, участок, отдел, лаборатория, мастерская и т.д.)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="282" y="438" width="79" height="65" uuid="9dc936c0-3f5b-477b-bc98-16430b68fe0b">
+				<reportElement x="282" y="510" width="79" height="65" uuid="9dc936c0-3f5b-477b-bc98-16430b68fe0b">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -701,7 +688,7 @@
 удостоверения]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="361" y="438" width="87" height="65" uuid="2b7dfa08-9543-4260-913c-b4f4f2ab4122">
+				<reportElement x="361" y="510" width="87" height="65" uuid="2b7dfa08-9543-4260-913c-b4f4f2ab4122">
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
@@ -723,7 +710,7 @@
 т.д.)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="448" y="438" width="91" height="65" uuid="56c50cc7-2ff0-4f24-8f3b-b93c0995b8a5">
+				<reportElement x="448" y="510" width="91" height="65" uuid="56c50cc7-2ff0-4f24-8f3b-b93c0995b8a5">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 					<property name="com.jaspersoft.studio.unit.height" value="px"/>
 				</reportElement>
@@ -753,6 +740,24 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{ThreeMemberOfCommission}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement x="0" y="358" width="538" height="15" uuid="e90aafa5-9324-4f3d-9972-bccf37e5ea26">
+					<property name="com.jaspersoft.studio.unit.height" value="px"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Arial" size="12"/>
+				</textElement>
+				<text><![CDATA[провела проверку знаний требований охраны труда работников по программе - изменить]]></text>
+			</staticText>
+			<componentElement>
+				<reportElement x="0" y="373" width="539" height="97" uuid="2fc69412-5350-4cd4-a7d5-a15a0659968a"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<datasetRun subDataset="ProgramCollectionDataSet" uuid="cd9e73ac-7215-477e-9464-8b70765e3992">
+						<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.JREmptyDataSource() ]]></dataSourceExpression>
+					</datasetRun>
+					<jr:listContents height="97" width="539"/>
+				</jr:list>
+			</componentElement>
 		</band>
 		<band height="185">
 			<staticText>
